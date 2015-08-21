@@ -1,5 +1,10 @@
 @Sources = new Mongo.Collection 'sources'
 
+@source_types = ->
+  [{_id: 'sonar', title: 'Sonar'},
+   {_id: 'jenkins', title: 'Jenkins'},
+   {_id: 'jira', title: 'Jira'}]
+
 Sources.allow
   update: (userId, source) -> ownsProjectItem userId, source
   remove: (userId, source) -> ownsProjectItem userId, source

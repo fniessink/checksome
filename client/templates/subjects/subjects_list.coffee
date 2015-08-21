@@ -1,6 +1,5 @@
 Template.subjectsList.helpers
   subjects: -> Subjects.find {}, {sort: {position: 1}}
-  has_sources: -> Sources.find().count() > 0
   submitting: -> Session.get('kindSubmitting') == 'subject' or Subjects.find().count() == 0
 
 Template.subjectsList.onRendered ->

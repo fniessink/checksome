@@ -1,20 +1,14 @@
 <template name="subjectsList">
-  {{#if has_sources}}
-    {{#if submitting}}
-      {{> subjectSubmit}}
-    {{/if}}
-    <div class="sortable">
-      {{#each subjects}}
-        {{#if item_is_edited}}
-          {{> subjectEdit}}
-        {{else}}
-          {{> item}}
-        {{/if}}
-      {{/each}}
-    </div>
-  {{else}}
-    <div class="jumbotron">
-      <p>{{_ "You need to add sources before you can add subjects"}}.</p>
-    </div>
+  {{#if submitting}}
+    {{> subjectSubmit}}
   {{/if}}
+  <div class="sortable">
+    {{#each subjects}}
+      {{#if item_is_edited}}
+        {{> subjectEdit}}
+      {{else}}
+        {{> item}}
+      {{/if}}
+    {{/each}}
+  </div>
 </template>

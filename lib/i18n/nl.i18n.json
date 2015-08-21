@@ -33,8 +33,9 @@
   "Select sources": "Selectie van bronnen",
   "source": "bron",
   "Sources": "Bronnen",
-  "Sources and subjects can be reordered by drag and drop":
-    "Bronnen en subjecten kunnen met drag en drop van volgorde worden veranderd",
+  "Items can be reordered by drag and drop":
+    "Items kunnen met drag en drop van volgorde worden veranderd",
+  "subject_source_id": "Subject-bron-id",
   "Submit": "Voeg toe",
   "submitted_by": "Ingevoerd door <span class='author'>%s</span> op <span class='date'>%s</span>.",
   "Title": "Titel",
@@ -42,8 +43,6 @@
   "url_placeholder": "Specificeer de URL",
   "Welcome!": "Welkom!",
   "You have no projects": "U heeft geen projecten",
-  "You need to add sources before you can add subjects":
-    "U moet bronnen toevoegen voordat u subjecten kan toevoegen",
   "You need to add sources before you can generate a report":
     "U moet bronnen toevoegen voordat een rapport kan worden gemaakt"
 }

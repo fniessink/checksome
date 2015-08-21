@@ -12,6 +12,11 @@
         </a>
       </li>
       <li role="presentation">
+        <a href="#subject_source_id" aria-controls="subject_source_ids" role="tab" data-toggle="tab">
+          {{_ "Subject-source-ids"}} <span class="badge">{{subject_source_ids_count}}</span>
+        </a>
+      </li>
+      <li role="presentation">
         <a href="#report" aria-controls="report" role="tab" data-toggle="tab">
           {{_ "Report"}}
         </a>
@@ -31,7 +36,10 @@
       <div role="tabpanel" class="tab-pane fade" id="subject" aria-labelled-by="subjects">
         {{> subjectsList}}
       </div>
-      <div role="tabpanel" class="tab-pane fade" id="report" aria-labelled-by="measures">
+      <div role="tabpanel" class="tab-pane fade" id="subject_source_id" aria-labelled-by="subject_source_ids">
+        {{> subjectSourceIdsList}}
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="report" aria-labelled-by="report">
         {{> projectReport}}
       </div>
     </div>

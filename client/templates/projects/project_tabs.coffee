@@ -14,11 +14,12 @@ Template.projectTabs.events
 Template.projectTabs.helpers
   sources_count: -> Sources.find().count()
   subjects_count: -> Subjects.find().count()
+  subject_source_ids_count: -> SubjectSourceIds.find().count()
   translated_kind: -> TAPi18n.__ Session.get 'currentProjectTab'
   can_add_item: ->
     currentTab = Session.get 'currentProjectTab'
     if currentTab == 'report'
       return false
-    if currentTab == 'subject' and Sources.find().count() == 0
+    if currentTab == 'subject_source_ids' and (Sources.find().count() == 0 or Subjects.find().count() == 0)
       return false
     return true

@@ -9,6 +9,10 @@ Meteor.publish 'sources', (projectId) ->
   check projectId, String
   Sources.find {projectId: projectId}
 
+Meteor.publish 'subject_source_ids', (projectId) ->
+  check projectId, String
+  SubjectSourceIds.find {projectId: projectId}
+
 Meteor.publish 'notifications', ->
   Notifications.find {userId: this.userId}
 

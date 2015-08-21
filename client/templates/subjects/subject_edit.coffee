@@ -1,19 +1,5 @@
-Template.subjectEdit.onCreated ->
-  Session.set 'subjectEditErrors', {}
-
-Template.subjectEdit.onRendered ->
-  this.$(".source-select").select2
-    placeholder: TAPi18n.__ "Select sources"
-
 Template.subjectEdit.helpers
-  errorMessage: (field) -> Session.get('subjectEditErrors')[field]
-  errorClass: (field) ->
-    if Session.get('subjectEditErrors')[field] then 'has-error' else ''
-  sources: -> Sources.find()
-  sourceIsSelected: ->
-    subject = Template.parentData()
-    this._id in subject.sources
-  hasNoRisks: -> Risks.find({subjects: this._id}).count() == 0
+  hasNoSubjectSourceIds: -> SubjectSourceIds.find({subject: this._id}).count() == 0
 
 Template.subjectEdit.events
   'submit form': (e, template) ->
@@ -21,20 +7,14 @@ Template.subjectEdit.events
 
     $title = $(e.target).find '[name=title]'
     $description = $(e.target).find '[name=description]'
-    $sources = $(e.target).find '[name=sources]'
     subjectProperties =
       title: $title.val()
       description: $description.val()
-      sources: $sources.val() or []
 
     Session.set 'subject_title', {}
-    Session.set 'subjectEditErrors', {}
     errors = validateSubject subjectProperties
     if errors.title
       Session.set 'subject_title', errors
-    if errors.sources
-      Session.set 'subjectEditErrors', errors
-    if errors.title or errors.sources
       return false
 
     Subjects.update this._id, {$set: subjectProperties}, (error) ->

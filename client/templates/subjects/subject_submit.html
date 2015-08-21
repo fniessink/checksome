@@ -2,17 +2,6 @@
   <form name="subject" class="item-form form">
     {{> titleControl control_id='subject_title' title='' kind='subject'}}
     {{> descriptionControl description='' kind='subject'}}
-    <div class="form-group {{errorClass 'sources'}}">
-      <div class="controls">
-        <label for="sources">{{_ "Sources"}}</label>
-        <select name="sources" multiple="multiple" class="form-control source-select">
-          {{#each sources}}
-            <option value="{{_id}}">{{title}}</option>
-          {{/each}}
-        </select>
-        <span class="help-block">{{errorMessage 'sources'}}</span>
-      </div>
-    </div>
     <button type="submit" class="btn btn-primary submit">{{_ "OK"}}</button>
     {{#if has_subjects}}
       <button type="button" class="btn btn-default cancel">{{_ "Cancel"}}</button>

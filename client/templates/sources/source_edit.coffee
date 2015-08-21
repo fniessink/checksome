@@ -1,7 +1,10 @@
 Template.sourceEdit.helpers
-  hasNoFindings: ->
-    Findings.find({sources: this._id}).count() == 0
-
+  hasNoSubjects: ->
+    Subjects.find({sources: this._id}).count() == 0
+  types: -> source_types()
+  typeIsSelected: ->
+    source = Template.parentData()
+    this._id == source.type
 
 Template.sourceEdit.events
   'submit form': (e, template) ->
@@ -9,10 +12,12 @@ Template.sourceEdit.events
 
     $title = $(e.target).find '[name=title]'
     $description = $(e.target).find '[name=description]'
+    $type = $(e.target).find '[name=type]'
     $url = $(e.target).find '[name=url]'
     sourceProperties =
       title: $title.val()
       description: $description.val()
+      type: $type.val()
       url: $url.val()
 
     Session.set 'source_title', {}

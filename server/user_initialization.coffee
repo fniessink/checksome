@@ -11,6 +11,7 @@ Accounts.onCreateUser (options, user) ->
     title: "Sonar"
     description: "This is an example of a source. In this case Sonar, a tool
       used for measuring the quality of source code."
+    type: 'sonar'
     url: 'http://sonar/'
     projectId: projectId
     userId: user._id
@@ -21,6 +22,7 @@ Accounts.onCreateUser (options, user) ->
   source2 =
     title: "Jenkins"
     description: "An example source, in this case Jenkins, a CI-server."
+    type: 'jenkins'
     url: 'http://jenkins/'
     projectId: projectId
     userId: user._id
@@ -31,6 +33,7 @@ Accounts.onCreateUser (options, user) ->
   source3 =
     title: "Jira"
     description: "Jira is an issue tracker."
+    type: 'jira'
     url: 'http://jira/'
     projectId: projectId
     userId: user._id
@@ -47,7 +50,6 @@ Accounts.onCreateUser (options, user) ->
     position: 0
     submitted: new Date
     kind: 'subject'
-    sources: [source1Id]
   subject1Id = Subjects.insert subject1
   subject2 =
     title: "Subject 2"
@@ -57,6 +59,5 @@ Accounts.onCreateUser (options, user) ->
     position: 1
     submitted: new Date
     kind: 'subject'
-    sources: [source2Id]
   subject2Id = Subjects.insert subject2
   return user

@@ -1,25 +1,30 @@
-Template.subjectSubmit.helpers  
-  has_subjects: -> Subjects.find().count() > 0
+Template.subjectSourceIdSubmit.helpers
+  sources: -> Sources.find()
+  subjects: -> Subjects.find()
 
 
-Template.subjectSubmit.events
+Template.subjectSourceIdSubmit.events
   'submit form': (e, template) ->
     e.preventDefault()
 
     $title = $(e.target).find '[name=title]'
     $description = $(e.target).find '[name=description]'
-    subject =
+    $subject = $(e.target).find '[name=subject]'
+    $source = $(e.target).find '[name=source]'
+    id =
       title: $title.val()
       description: $description.val()
+      subject: $subject.val()
+      source: $source.val()
       projectId: template.data._id
 
-    Session.set 'subject_title', {}
-    errors = validateSubject subject
+    Session.set 'subject_source_id_title', {}
+    errors = validateSubjectSourceId id
     if errors.title
       Session.set 'subject_title', errors
       return false
 
-    Meteor.call 'subjectInsert', subject, (error, subjectId) ->
+    Meteor.call 'subjectSourceIdInsert', id, (error, idId) ->
       if error
         throwError error.reason
       else

@@ -1,0 +1,20 @@
+<template name="subjectSourceIdsList">
+  {{#if has_sources_and_subjects}}
+    {{#if submitting}}
+      {{> subjectSourceIdSubmit}}
+    {{/if}}
+    <div class="sortable">
+      {{#each subject_source_ids}}
+        {{#if item_is_edited}}
+          {{> subjectSourceIdEdit}}
+        {{else}}
+          {{> item}}
+        {{/if}}
+      {{/each}}
+    </div>
+  {{else}}
+    <div class="jumbotron">
+      <p>{{_ "You need to add sources and subjects before you can add subject source ids"}}.</p>
+    </div>
+  {{/if}}
+</template>

@@ -1,33 +1,37 @@
-<template name="sourceEdit">
-  <form name="source" class="item-form form">
-    {{> titleControl extendContext 'control_id' 'source_title'}}
+<template name="subjectSourceIdEdit">
+  <form name="subject_source_id" class="item-form form">
+    {{> titleControl extendContext 'control_id' 'subject_source_id_title'}}
     {{> descriptionControl}}
     <div class="form-group">
       <div class="controls">
-        <label for="type">{{_ "Type"}}</label>
-        <select name="type" class="form-control">
-          {{#each types}}
-            <option selected="{{typeIsSelected}}" value="{{_id}}">{{title}}</option>
+        <label for="subject">{{_ "Subject"}}</label>
+        <select name="subject" class="form-control">
+          {{#each subjects}}
+            <option selected="{{subjectIsSelected}}" value="{{_id}}">{{title}}</option>
           {{/each}}
         </select>
       </div>
     </div>
-    {{> urlControl extendContext 'control_id' 'source_url'}}
+    <div class="form-group">
+      <div class="controls">
+        <label for="source">{{_ "Source"}}</label>
+        <select name="source" class="form-control">
+          {{#each sources}}
+            <option selected="{{sourceIsSelected}}" value="{{_id}}">{{title}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
     <div class="form-group">
       <button type="submit" class="btn btn-primary submit">{{_ "OK"}}</button>
       <button type="button" class="btn btn-default cancel">{{_ "Cancel"}}</button>
-      {{#if hasNoSubjects}}
-        <a data-toggle="modal" class="btn btn-danger delete pull-right" href="#deleteSource">
-          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> {{_ "Delete"}}
-        </a>
-      {{/if}}
     </div>
   </form>
-  {{> deleteSource}}
+  {{>deleteSubjectSourceId}}
 </template>
 
-<template name="deleteSource">
-  <div class="modal fade" id="deleteSource" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<template name="deleteSubjectSourceId">
+  <div class="modal fade" id="deleteSubjectSourceId" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">

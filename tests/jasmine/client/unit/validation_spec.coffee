@@ -4,6 +4,9 @@ title_error =
 url_error =
   url: jasmine.any(String)
 
+type_error =
+  type: jasmine.any(String)
+
 
 describe 'An item', ->
 
@@ -62,6 +65,7 @@ describe 'A source', ->
   beforeEach ->
     this.source =
       title: 'Title'
+      type: 'sonar'
       url: 'http://url'
 
   it 'is valid when it has a title, a url, and a project id', ->
@@ -75,33 +79,32 @@ describe 'A source', ->
     this.source.url = ''
     expect(validateSource(this.source)).toEqual url_error
 
+  it 'is invalid when it has no type', ->
+    this.source.type = ''
+    expect(validateSource(this.source)).toEqual type_error
+
 
 describe 'A subject', ->
 
   beforeEach ->
     this.subject =
       title: 'Title'
-      sources: ['Dummy source']
 
-  it 'is valid when it has a title and at least one source', ->
+  it 'is valid when it has a title', ->
     expect(validateSubject(this.subject)).toEqual {}
 
   it 'is invalid when it has no title', ->
     this.subject.title = ''
     expect(validateSubject(this.subject)).toEqual title_error
 
-  it 'is invalid when it has no sources', ->
-    this.subject.sources = []
-    expect(validateSubject(this.subject)).toEqual
-      sources: jasmine.any(String)
 
-  it 'is invalid when it has no title and no sources', ->
-    this.subject.title = ''
-    this.subject.sources = []
-    expect(validateSubject(this.subject)).toEqual
-      title: jasmine.any(String)
-      sources: jasmine.any(String)
+describe 'A subject-source-id', ->
 
-  it 'is invalid when the sources are not an array of strings', ->
-    this.subject.sources = [10]
-    expect( => validateSubject(this.subject)).toThrowError Match.Error
+  beforeEach ->
+    this.subject_source_id =
+      title: 'a.b.c'
+      subject: 'subject_id'
+      source: 'source_id'
+
+  it 'is valid when it has a title, subject, and source', ->
+    expect(validateSubjectSourceId(this.subject_source_id)).toEqual {}
