@@ -25,6 +25,9 @@
     <div class="form-group">
       <button type="submit" class="btn btn-primary submit">{{_ "OK"}}</button>
       <button type="button" class="btn btn-default cancel">{{_ "Cancel"}}</button>
+      <a data-toggle="modal" class="btn btn-danger delete pull-right" href="#deleteSubjectSourceId">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> {{_ "Delete"}}
+      </a>
     </div>
   </form>
   {{>deleteSubjectSourceId}}

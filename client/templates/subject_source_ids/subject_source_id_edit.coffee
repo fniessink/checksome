@@ -47,4 +47,4 @@ Template.deleteSubjectSourceId.events
       SubjectSourceIds.remove this._id
       stop_editing()
     # Make sure the backdrop is hidden before we do anything.
-    $('#deleteSubjectSourceId').modal('hide').on('hidden.bs.modal', delete_subject)
+    $('#deleteSubjectSourceId').modal('hide').on('hidden.bs.modal', delete_subject_source_id)
