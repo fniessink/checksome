@@ -1,0 +1,11 @@
+<template name="sourceSubmit">
+  <form name="source" class="item-form form">
+    {{> titleControl control_id='source_title' title='' kind='source'}}
+    {{> descriptionControl description='' kind='source'}}
+    {{> urlControl control_id='source_url' url='' kind='source'}}
+    <button type="submit" class="btn btn-primary submit">{{_ "OK"}}</button>
+    {{#if has_sources}}
+      <button type="button" class="btn btn-default cancel">{{_ "Cancel"}}</button>
+    {{/if}}
+  </form>
+</template>

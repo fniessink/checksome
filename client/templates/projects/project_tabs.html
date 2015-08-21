@@ -1,0 +1,55 @@
+<template name="projectTabs">
+  <div role="tabpanel">
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation">
+        <a href="#source" aria-controls="sources" role="tab" data-toggle="tab">
+          {{_ "Sources"}} <span class="badge">{{sources_count}}</span>
+        </a>
+      </li>
+      <li role="presentation">
+        <a href="#finding" aria-controls="findings" role="tab" data-toggle="tab">
+          {{_ "Findings"}} <span class="badge">{{findings_count}}</span>
+        </a>
+      </li>
+      <li role="presentation">
+        <a href="#risk" aria-controls="risks" role="tab" data-toggle="tab">
+          {{_ "Risks"}} <span class="badge">{{risks_count}}</span>
+        </a>
+      </li>
+      <li role="presentation">
+        <a href="#measure" aria-controls="measures" role="tab" data-toggle="tab">
+          {{_ "Measures"}} <span class="badge">{{measures_count}}</span>
+        </a>
+      </li>
+      <li role="presentation">
+        <a href="#report" aria-controls="report" role="tab" data-toggle="tab">
+          {{_ "Report"}}
+        </a>
+      </li>
+      {{#if can_add_item}}
+        <li class="pull-right">
+          <button class="btn btn-primary add-kind">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> {{_ "add_kind" translated_kind}}
+          </button>
+        </li>
+      {{/if}}
+    </ul>
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane fade" id="source" aria-labelled-by="sources">
+        {{> sourcesList}}
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="finding" aria-labelled-by="findings">
+        {{> findingsList}}
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="risk" aria-labelled-by="risks">
+        {{> risksList}}
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="measure" aria-labelled-by="measures">
+        {{> measuresList}}
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="report" aria-labelled-by="measures">
+        {{> projectReport}}
+      </div>
+    </div>
+  </div>
+</template>

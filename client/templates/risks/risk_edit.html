@@ -1,0 +1,49 @@
+<template name="riskEdit">
+  <form name="risk" class="item-form form">
+    {{> titleControl extendContext 'control_id' 'risk_title'}}
+    {{> descriptionControl}}
+    <div class="form-group {{errorClass 'findings'}}">
+      <div class="controls">
+        <label for="findings">{{_ "Findings"}}</label>
+        <select name="findings" multiple="multiple" class="form-control finding-select">
+          {{#each findings}}
+            <option selected="{{findingIsSelected}}" value="{{_id}}">{{title}}</option>
+          {{/each}}
+        </select>
+        <span class="help-block">{{errorMessage 'findings'}}</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary submit">{{_ "OK"}}</button>
+      <button type="button" class="btn btn-default cancel">{{_ "Cancel"}}</button>
+      {{#if hasNoMeasures}}
+        <a data-toggle="modal" class="btn btn-danger delete pull-right" href="#deleteRisk">
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> {{_ "Delete"}}
+        </a>
+      {{/if}}
+    </div>
+  </form>
+  {{>deleteRisk}}
+</template>
+
+<template name="deleteRisk">
+  <div class="modal fade" id="deleteRisk" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">{{_ "delete_kind" translated_kind}}</h4>
+        </div>
+        <div class="modal-body">
+          <h4>{{title}}</h4>
+          <p>{{description}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{_ "Cancel"}}</button>
+          <button type="button" class="btn btn-danger delete" data-dismiss="modal">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> {{_ "Delete"}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

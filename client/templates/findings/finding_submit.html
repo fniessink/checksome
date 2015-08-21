@@ -1,0 +1,37 @@
+<template name="findingSubmit">
+  <form name="finding" class="item-form form">
+    {{> titleControl control_id='finding_title' title='' kind='finding'}}
+    {{> descriptionControl description='' kind='finding'}}
+    <div class="form-group {{errorClass 'sources'}}">
+      <div class="controls">
+        <label for="sources">{{_ "Sources"}}</label>
+        <select name="sources" multiple="multiple" class="form-control source-select">
+          {{#each sources}}
+            <option value="{{_id}}">{{title}}</option>
+          {{/each}}
+        </select>
+        <span class="help-block">{{errorMessage 'sources'}}</span>
+      </div>
+    </div>
+    {{#if checklists.length}}
+      {{> criteriaSelect}}
+    {{/if}}
+    <button type="submit" class="btn btn-primary submit">{{_ "OK"}}</button>
+    {{#if has_findings}}
+      <button type="button" class="btn btn-default cancel">{{_ "Cancel"}}</button>
+    {{/if}}
+  </form>
+</template>
+
+<template name="criteriaSelect">
+  <div class="form-group">
+    <div class="controls">
+      <label for="criteria">{{_ "Criteria"}}</label>
+      <select name="criteria" multiple="multiple" class="form-control criterium-select">
+        {{#each project_criteria}}
+          <option value="{{_id}}">{{title}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+</template>

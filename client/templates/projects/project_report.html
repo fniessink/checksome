@@ -1,0 +1,145 @@
+<template name="projectReport">
+  <div>
+    {{> projectMeasuresTable}}
+    {{> projectRisksTable}}
+    {{> projectFindingsTable}}
+    {{> projectSourcesTable}}
+    {{> projectChecklistsTables}}
+  </div>
+</template>
+
+<template name="projectChecklistsTables">
+  {{#each checklists}}
+    <div class="grid-block">
+      <table class="table table-striped">
+        <caption>{{title}}</caption>
+        <thead>
+          <tr>
+            <th>{{_ "Title"}}</th>
+            <th>{{_ "Description"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each criteria}}
+            <tr>
+              <td>{{title}}</td>
+              <td>{{description}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  {{/each}}
+</template>
+
+<template name="projectSourcesTable">
+  {{#if has_sources}}
+    <div class="grid-block">
+      <table class="table table-striped">
+        <caption>{{_ "Sources"}}</caption>
+        <thead>
+          <tr>
+            <th>{{_ "Title"}}</th>
+            <th>{{_ "Description"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each sources}}
+            <tr>
+              <td>{{title}}</td>
+              <td>{{description}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  {{else}}
+    <div class="jumbotron">
+      <p>{{_ "You need to add sources before you can generate a report"}}.</p>
+    </div>
+  {{/if}}
+</template>
+
+<template name="projectFindingsTable">
+  {{#if has_findings}}
+    <div class="grid-block">
+      <table class="table table-striped">
+        <caption>{{_ "Findings"}}</caption>
+        <thead>
+          <tr>
+            <th>{{_ "Title"}}</th>
+            <th>{{_ "Description"}}</th>
+            <th>{{_ "Sources"}}</th>
+            {{#if has_checklists}}
+              <th>{{_ "Criteria"}}</th>
+            {{/if}}
+          </tr>
+        </thead>
+        <tbody>
+          {{#each findings}}
+            <tr>
+              <td>{{title}}</td>
+              <td>{{description}}</td>
+              <td>{{#each findingSources}}{{title}}<br>{{/each}}</td>
+              {{#if project_has_checklists}}
+                <td>{{#each findingCriteria}}{{title}}<br>{{/each}}</td>
+              {{/if}}
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  {{/if}}
+</template>
+
+<template name="projectRisksTable">
+  {{#if has_risks}}
+    <div class="grid-block">
+      <table class="table table-striped">
+        <caption>{{_ "Risks"}}</caption>
+        <thead>
+          <tr>
+            <th>{{_ "Title"}}</th>
+            <th>{{_ "Description"}}</th>
+            <th>{{_ "Findings"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each risks}}
+            <tr>
+              <td>{{title}}</td>
+              <td>{{description}}</td>
+              <td>{{#each riskFindings}}{{title}}<br>{{/each}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  {{/if}}
+</template>
+
+<template name="projectMeasuresTable">
+  {{#if has_measures}}
+    <div class="grid-block">
+      <table class="table table-striped">
+        <caption>{{_ "Measures"}}</caption>
+        <thead>
+          <tr>
+            <th>{{_ "Title"}}</th>
+            <th>{{_ "Description"}}</th>
+            <th>{{_ "Risks"}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each measures}}
+            <tr>
+              <td>{{title}}</td>
+              <td>{{description}}</td>
+              <td>{{#each measureRisks}}{{title}}<br>{{/each}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  {{/if}}
+</template>

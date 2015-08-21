@@ -1,0 +1,10 @@
+<template name="criteriumSubmit">
+  <form name="criterium" class="item-form form">
+    {{> titleControl control_id='criterium_title' title='' kind='criterium'}}
+    {{> descriptionControl description='' kind='criterium'}}
+    <button type="submit" class="btn btn-primary submit">{{_ "OK"}}</button>
+    {{#if has_criteria}}
+      <button type="button" class="btn btn-default cancel">{{_ "Cancel"}}</button>
+    {{/if}}
+  </form>
+</template>
