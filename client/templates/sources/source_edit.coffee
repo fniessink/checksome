@@ -19,9 +19,9 @@ Template.sourceEdit.events
     errors = validateSource sourceProperties
     if errors.title
       Session.set 'source_title', errors
-      return false
     if errors.url
       Session.set 'source_url', errors
+    if errors.title or errors.url
       return false
 
     Sources.update this._id, {$set: sourceProperties}, (error) ->

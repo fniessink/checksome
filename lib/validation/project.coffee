@@ -1,7 +1,6 @@
 @validateProject = (project) ->
   check project, Match.ObjectIncluding
     members: [String]
-    checklists: [String]
   errors = validateItem project
   if project.members.length == 0
     if Meteor.isServer

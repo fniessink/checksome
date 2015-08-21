@@ -7,7 +7,7 @@ Projects.allow
 Projects.deny
   update: (userId, project, fieldNames) ->
     # may only edit the following fields:
-    _.without(fieldNames, 'title', 'description', 'members', 'checklists').length > 0
+    _.without(fieldNames, 'title', 'description', 'members').length > 0
 
 Projects.deny
   update: (userId, project, fieldNames, modifier) ->

@@ -1,8 +1,8 @@
 To **validate items** we check that they have a `title` and an optional
 `description`.
 
-Items can both be containers like projects and checklists, as well as
-singular items such as sources, findings, and risks.
+Items can both be containers like projects, as well as
+singular items such as sources and subjects.
 
     @validateItem = (item) ->
 

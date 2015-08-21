@@ -3,7 +3,7 @@ html, body {
   background-color: #eee ! important;
   color: #666666; }
 
-.grid-block, .main, .project, .checklist, .item, .item-form {
+.grid-block, .main, .project, .item, .item-form {
   background-color: #fff;
   border-radius: 3px;
   padding: 10px;
@@ -26,7 +26,7 @@ html, body {
   height: 300px; }
 
 .add-kind {
-  margin-right: 10px; 
+  margin-right: 10px;
 }
 
 .dropdown-menu span {

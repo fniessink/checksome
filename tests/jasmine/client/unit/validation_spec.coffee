@@ -32,7 +32,6 @@ describe 'A project', ->
     this.project =
       title: 'Title'
       members: ['Dummy user']
-      checklists: []
 
   it 'is valid when it has a title and at least one project member', ->
     expect(validateProject(this.project)).toEqual {}
@@ -57,10 +56,6 @@ describe 'A project', ->
     this.project.members = [10]
     expect( -> validateItem(this.project)).toThrowError Match.Error
 
-  it 'is invalid when the checklists is not an array of strings', ->
-    this.project.checklists = [10]
-    expect( -> validateItem(this.project)).toThrowError Match.Error
-
 
 describe 'A source', ->
 
@@ -81,138 +76,32 @@ describe 'A source', ->
     expect(validateSource(this.source)).toEqual url_error
 
 
-describe 'A finding', ->
+describe 'A subject', ->
 
   beforeEach ->
-    this.finding =
+    this.subject =
       title: 'Title'
       sources: ['Dummy source']
-      criteria: ['Dummy criterium']
 
   it 'is valid when it has a title and at least one source', ->
-    expect(validateFinding(this.finding)).toEqual {}
+    expect(validateSubject(this.subject)).toEqual {}
 
   it 'is invalid when it has no title', ->
-    this.finding.title = ''
-    expect(validateFinding(this.finding)).toEqual title_error
+    this.subject.title = ''
+    expect(validateSubject(this.subject)).toEqual title_error
 
   it 'is invalid when it has no sources', ->
-    this.finding.sources = []
-    expect(validateFinding(this.finding)).toEqual
+    this.subject.sources = []
+    expect(validateSubject(this.subject)).toEqual
       sources: jasmine.any(String)
 
   it 'is invalid when it has no title and no sources', ->
-    this.finding.title = ''
-    this.finding.sources = []
-    expect(validateFinding(this.finding)).toEqual
+    this.subject.title = ''
+    this.subject.sources = []
+    expect(validateSubject(this.subject)).toEqual
       title: jasmine.any(String)
       sources: jasmine.any(String)
 
   it 'is invalid when the sources are not an array of strings', ->
-    this.finding.sources = [10]
-    expect( => validateFinding(this.finding)).toThrowError Match.Error
-
-  it 'is invalid when the criteria are not an array of strings', ->
-    this.finding.criteria = [10]
-    expect( => validateFinding(this.finding)).toThrowError Match.Error
-
-
-describe 'A risk', ->
-
-  beforeEach ->
-    this.risk =
-      title: 'Title'
-      findings: ['Dummy finding']
-
-  it 'is valid when it has a title, a project id, and at least one finding', ->
-    expect(validateRisk(this.risk)).toEqual {}
-
-  it 'is invalid when it has no title', ->
-    this.risk.title = ''
-    expect(validateRisk(this.risk)).toEqual title_error
-
-  it 'is invalid when it has no findings', ->
-    this.risk.findings = []
-    expect(validateRisk(this.risk)).toEqual
-      findings: jasmine.any(String)
-
-  it 'is invalid when it has no title and no findings', ->
-    this.risk.title = ''
-    this.risk.findings = []
-    expect(validateRisk(this.risk)).toEqual
-      title: jasmine.any(String)
-      findings: jasmine.any(String)
-
-  it 'is invalid when the findings are not an array of strings', ->
-    this.risk.findings = [10]
-    expect( => validateRisk(this.risk)).toThrowError Match.Error
-
-
-describe 'A measure', ->
-
-  beforeEach ->
-    this.measure =
-      title: 'Title'
-      risks: ['Dummy risk']
-
-  it 'is valid when it has a title and at least one risk', ->
-    expect(validateMeasure(this.measure)).toEqual {}
-
-  it 'is invalid when it has no title', ->
-    this.measure.title = ''
-    expect(validateMeasure(this.measure)).toEqual title_error
-
-  it 'is invalid when it has no risks', ->
-    this.measure.risks = []
-    expect(validateMeasure(this.measure)).toEqual
-      risks: jasmine.any(String)
-
-  it 'is invalid when it has no title and no risks', ->
-    this.measure.title = ''
-    this.measure.risks = []
-    expect(validateMeasure(this.measure)).toEqual
-      title: jasmine.any(String)
-      risks: jasmine.any(String)
-
-  it 'is invalid when the risks are not an array of strings', ->
-    this.measure.risks = []
-    expect( => validateMeasure(this.risk)).toThrowError Match.Error
-
-
-describe 'A checklist', ->
-
-  beforeEach ->
-    this.checklist =
-      title: 'Title'
-      owners: ['Dummy user']
-
-  it 'is valid when it has a title and at least one owner', ->
-    expect(validateChecklist(this.checklist)).toEqual {}
-
-  it 'is invalid when it has no title', ->
-    this.checklist.title = ''
-    expect(validateChecklist(this.checklist)).toEqual title_error
-
-  it 'is invalid when it has no owners', ->
-    this.checklist.owners = []
-    expect(validateChecklist(this.checklist)).toEqual
-      owners: jasmine.any(String)
-
-  it 'is invalid when it has no title and no owners', ->
-    expect(validateChecklist({title: '', owners: []})).toEqual
-      title: jasmine.any(String)
-      owners: jasmine.any(String)
-
-
-describe 'A criterium', ->
-
-  beforeEach ->
-    this.criterium =
-      title: 'Title'
-
-  it 'is valid when it has a title', ->
-    expect(validateCriterium(this.criterium)).toEqual {}
-
-  it 'is invalid when it has no title', ->
-    this.criterium.title = ''
-    expect(validateCriterium(this.criterium)).toEqual title_error
+    this.subject.sources = [10]
+    expect( => validateSubject(this.subject)).toThrowError Match.Error

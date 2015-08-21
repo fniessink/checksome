@@ -10,7 +10,7 @@ describe 'The edited item', ->
     start_editing {_id: 'item'}
     start_submitting 'source'
     expect(Session.get('itemEdited')).toEqual null
-    
+
 describe 'The submitted kind', ->
   it 'can be set', ->
     start_submitting 'source'

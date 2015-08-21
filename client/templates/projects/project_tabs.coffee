@@ -13,18 +13,12 @@ Template.projectTabs.events
 
 Template.projectTabs.helpers
   sources_count: -> Sources.find().count()
-  findings_count: -> Findings.find().count()
-  risks_count: -> Risks.find().count()
-  measures_count: -> Measures.find().count()
+  subjects_count: -> Subjects.find().count()
   translated_kind: -> TAPi18n.__ Session.get 'currentProjectTab'
   can_add_item: ->
     currentTab = Session.get 'currentProjectTab'
     if currentTab == 'report'
       return false
-    if currentTab == 'measure' and Risks.find().count() == 0
-      return false
-    if currentTab == 'risk' and Findings.find().count() == 0
-      return false
-    if currentTab == 'finding' and Sources.find().count() == 0
+    if currentTab == 'subject' and Sources.find().count() == 0
       return false
     return true

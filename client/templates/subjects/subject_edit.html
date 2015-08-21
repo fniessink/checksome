@@ -1,33 +1,33 @@
-<template name="riskEdit">
-  <form name="risk" class="item-form form">
-    {{> titleControl extendContext 'control_id' 'risk_title'}}
+<template name="subjectEdit">
+  <form name="subject" class="item-form form">
+    {{> titleControl extendContext 'control_id' 'subject_title'}}
     {{> descriptionControl}}
-    <div class="form-group {{errorClass 'findings'}}">
+    <div class="form-group {{errorClass 'sources'}}">
       <div class="controls">
-        <label for="findings">{{_ "Findings"}}</label>
-        <select name="findings" multiple="multiple" class="form-control finding-select">
-          {{#each findings}}
-            <option selected="{{findingIsSelected}}" value="{{_id}}">{{title}}</option>
+        <label for="sources">{{_ "Sources"}}</label>
+        <select name="sources" multiple="multiple" class="form-control source-select">
+          {{#each sources}}
+            <option selected="{{sourceIsSelected}}" value="{{_id}}">{{title}}</option>
           {{/each}}
         </select>
-        <span class="help-block">{{errorMessage 'findings'}}</span>
+        <span class="help-block">{{errorMessage 'sources'}}</span>
       </div>
     </div>
     <div class="form-group">
       <button type="submit" class="btn btn-primary submit">{{_ "OK"}}</button>
       <button type="button" class="btn btn-default cancel">{{_ "Cancel"}}</button>
-      {{#if hasNoMeasures}}
-        <a data-toggle="modal" class="btn btn-danger delete pull-right" href="#deleteRisk">
+      {{#if hasNoRisks}}
+        <a data-toggle="modal" class="btn btn-danger delete pull-right" href="#deleteSubject">
           <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> {{_ "Delete"}}
         </a>
       {{/if}}
     </div>
   </form>
-  {{>deleteRisk}}
+  {{>deleteSubject}}
 </template>
 
-<template name="deleteRisk">
-  <div class="modal fade" id="deleteRisk" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<template name="deleteSubject">
+  <div class="modal fade" id="deleteSubject" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">

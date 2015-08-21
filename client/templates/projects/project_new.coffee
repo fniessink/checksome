@@ -5,13 +5,10 @@ Template.projectNew.onCreated ->
 Template.projectNew.onRendered ->
   $(".member-select").select2
     placeholder: TAPi18n.__ "Select project members"
-  $(".checklist-select").select2
-    placeholder: TAPi18n.__ "Select checklists"
 
 
 Template.projectNew.helpers
   usernames: -> Meteor.users.find {}, {sort: {username: 1}}
-  checklists: -> Checklists.find {}, {sort: {title: 1}}
   userIsCurrentUser: -> this._id == Meteor.userId()
   errorMessage: (field) -> Session.get('projectNewErrors')[field]
   errorClass: (field) ->
@@ -26,7 +23,6 @@ Template.projectNew.events
       title: $(e.target).find('[name=title]').val()
       description: $(e.target).find('[name=description]').val()
       members: $(e.target).find('[name=members]').val() or []
-      checklists: $(e.target).find('[name=checklists]').val() or []
 
     Session.set 'project_title', {}
     Session.set 'projectNewErrors', {}

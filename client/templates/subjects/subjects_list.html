@@ -1,12 +1,12 @@
-<template name="findingsList">
+<template name="subjectsList">
   {{#if has_sources}}
     {{#if submitting}}
-      {{> findingSubmit}}
+      {{> subjectSubmit}}
     {{/if}}
     <div class="sortable">
-      {{#each findings}}
+      {{#each subjects}}
         {{#if item_is_edited}}
-          {{> findingEdit}}
+          {{> subjectEdit}}
         {{else}}
           {{> item}}
         {{/if}}
@@ -14,7 +14,7 @@
     </div>
   {{else}}
     <div class="jumbotron">
-      <p>{{_ "You need to add sources before you can add findings"}}.</p>
+      <p>{{_ "You need to add sources before you can add subjects"}}.</p>
     </div>
   {{/if}}
 </template>

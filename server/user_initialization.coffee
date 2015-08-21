@@ -8,10 +8,10 @@ Accounts.onCreateUser (options, user) ->
     kind: 'project'
   projectId = Projects.insert tutorial
   source1 =
-    title: "Interview with project lead"
-    description: "This is an example of a source. In this case an interview
-      with a project leader. Some of the findings under the findings tab are
-      based on this source."
+    title: "Sonar"
+    description: "This is an example of a source. In this case Sonar, a tool
+      used for measuring the quality of source code."
+    url: 'http://sonar/'
     projectId: projectId
     userId: user._id
     position: 0
@@ -19,10 +19,9 @@ Accounts.onCreateUser (options, user) ->
     kind: 'source'
   source1Id = Sources.insert source1
   source2 =
-    title: "Software architecture description"
-    description: "An example source, in this case a software architecture
-      decription, or SAD for short. Some of the findings are based on this
-      source."
+    title: "Jenkins"
+    description: "An example source, in this case Jenkins, a CI-server."
+    url: 'http://jenkins/'
     projectId: projectId
     userId: user._id
     position: 1
@@ -30,59 +29,34 @@ Accounts.onCreateUser (options, user) ->
     kind: 'source'
   source2Id = Sources.insert source2
   source3 =
-    title: "Unit tests"
-    description: "The source code comes with unit tests."
+    title: "Jira"
+    description: "Jira is an issue tracker."
+    url: 'http://jira/'
     projectId: projectId
     userId: user._id
     position: 2
     submitted: new Date
     kind: 'source'
   source3Id = Sources.insert source3
-  finding1 =
-    title: "SAD is outdated"
-    description: "This is an example of a finding. The software architecture
-      document is outdated. We base this finding both on the document itself as
-      well as on the interview with the project lead."
+  subject1 =
+    title: "Subject 1"
+    description: "This is an example of a subject. Subjects are technical
+      components, teams, and other things that can be measured."
     projectId: projectId
     userId: user._id
     position: 0
     submitted: new Date
-    kind: 'finding'
-    sources: [source1Id, source2Id]
-  finding1Id = Findings.insert finding1
-  finding2 =
-    title: "No automated tests"
-    description: "This is an example of a finding. The project under
-      investigation has developed no automated tests. We base this finding on
-      the interview with the project lead."
+    kind: 'subject'
+    sources: [source1Id]
+  subject1Id = Subjects.insert subject1
+  subject2 =
+    title: "Subject 2"
+    description: "This is another example of a subject."
     projectId: projectId
     userId: user._id
     position: 1
     submitted: new Date
-    kind: 'finding'
-    sources: [source1Id]
-  finding2Id = Findings.insert finding2
-  risk1 =
-    title: "Regression bugs"
-    description: "This is an example of a risk. Since there are no automated
-      tests, there is a risk that changes to the software will cause bugs."
-    projectId: projectId
-    userId: user._id
-    position: 0
-    submitted: new Date
-    kind: 'risk'
-    findings: [finding2Id]
-  risk1Id = Risks.insert risk1
-  measure1 =
-    title: "Create automated regression test"
-    description: "This is an example of a mitigating measure. Since there are
-      no automated tests, there is a risk that changes to the software will
-      cause bugs. Creating an automated regression test can mitigate this risk."
-    projectId: projectId
-    userId: user._id
-    position: 0
-    submitted: new Date
-    kind: 'measure'
-    risks: [risk1Id]
-  Measures.insert measure1
+    kind: 'subject'
+    sources: [source2Id]
+  subject2Id = Subjects.insert subject2
   return user
