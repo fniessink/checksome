@@ -7,28 +7,23 @@ Template.subjectSourceIdSubmit.events
   'submit form': (e, template) ->
     e.preventDefault()
 
-    $title = $(e.target).find '[name=title]'
-    $description = $(e.target).find '[name=description]'
-    $subject = $(e.target).find '[name=subject]'
-    $source = $(e.target).find '[name=source]'
     id =
-      title: $title.val()
-      description: $description.val()
-      subject: $subject.val()
-      source: $source.val()
+      title: $(e.target).find('[name=title]').val()
+      description: $(e.target).find('[name=description]').val()
+      subject:  $(e.target).find('[name=subject]').val()
+      source: $(e.target).find('[name=source]').val()
       projectId: template.data._id
 
     Session.set 'subject_source_id_title', {}
     errors = validateSubjectSourceId id
     if errors.title
-      Session.set 'subject_title', errors
+      Session.set 'subject_source_id_title', errors
       return false
 
     Meteor.call 'subjectSourceIdInsert', id, (error, idId) ->
       if error
         throwError error.reason
       else
-        $title.val('')
-        $description.val('')
+        stop_submitting()
 
   'click .cancel': (e) -> stop_submitting()

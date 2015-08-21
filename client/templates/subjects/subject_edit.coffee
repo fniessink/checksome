@@ -5,11 +5,9 @@ Template.subjectEdit.events
   'submit form': (e, template) ->
     e.preventDefault()
 
-    $title = $(e.target).find '[name=title]'
-    $description = $(e.target).find '[name=description]'
     subjectProperties =
-      title: $title.val()
-      description: $description.val()
+      title: $(e.target).find('[name=title]').val()
+      description: $(e.target).find('[name=description]').val()
 
     Session.set 'subject_title', {}
     errors = validateSubject subjectProperties

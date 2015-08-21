@@ -10,15 +10,11 @@ Template.sourceEdit.events
   'submit form': (e, template) ->
     e.preventDefault()
 
-    $title = $(e.target).find '[name=title]'
-    $description = $(e.target).find '[name=description]'
-    $type = $(e.target).find '[name=type]'
-    $url = $(e.target).find '[name=url]'
     sourceProperties =
-      title: $title.val()
-      description: $description.val()
-      type: $type.val()
-      url: $url.val()
+      title: $(e.target).find('[name=title]').val()
+      description: $(e.target).find('[name=description]').val()
+      type: $(e.target).find('[name=type]').val()
+      url: $(e.target).find('[name=url]').val()
 
     Session.set 'source_title', {}
     errors = validateSource sourceProperties

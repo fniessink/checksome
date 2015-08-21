@@ -6,15 +6,11 @@ Template.sourceSubmit.events
   'submit form': (e, template) ->
     e.preventDefault()
 
-    $title = $(e.target).find '[name=title]'
-    $description = $(e.target).find '[name=description]'
-    $type = $(e.target).find '[name=type]'
-    $url = $(e.target).find '[name=url]'
     source =
-      title: $title.val()
-      description: $description.val()
-      type: $type.val()
-      url: $url.val()
+      title: $(e.target).find('[name=title]').val()
+      description: $(e.target).find('[name=description]').val()
+      type: $(e.target).find('[name=type]').val()
+      url: $(e.target).find('[name=url]').val()
       projectId: template.data._id
 
     Session.set 'source_title', {}
@@ -30,8 +26,6 @@ Template.sourceSubmit.events
       if error
         throwError error.reason
       else
-        $title.val('')
-        $description.val('')
-        $url.val('')
+        stop_submitting()
 
   'click .cancel': (e) -> stop_submitting()

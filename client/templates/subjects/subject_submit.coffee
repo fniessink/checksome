@@ -1,4 +1,4 @@
-Template.subjectSubmit.helpers  
+Template.subjectSubmit.helpers
   has_subjects: -> Subjects.find().count() > 0
 
 
@@ -6,11 +6,9 @@ Template.subjectSubmit.events
   'submit form': (e, template) ->
     e.preventDefault()
 
-    $title = $(e.target).find '[name=title]'
-    $description = $(e.target).find '[name=description]'
     subject =
-      title: $title.val()
-      description: $description.val()
+      title: $(e.target).find('[name=title]').val()
+      description: $(e.target).find('[name=description]').val()
       projectId: template.data._id
 
     Session.set 'subject_title', {}
@@ -23,7 +21,6 @@ Template.subjectSubmit.events
       if error
         throwError error.reason
       else
-        $title.val('')
-        $description.val('')
+        stop_submitting()
 
   'click .cancel': (e) -> stop_submitting()
