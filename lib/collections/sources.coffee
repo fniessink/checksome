@@ -10,7 +10,7 @@ Sources.allow
   remove: (userId, source) -> ownsProjectItem userId, source
 
 Sources.deny
-  remove: (userId, source) -> Findings.find({sources: source._id}).count() > 0
+  remove: (userId, source) -> SubjectSourceIds.find({source: source._id}).count() > 0
 
 Meteor.methods
   sourceInsert: (sourceAttributes) ->

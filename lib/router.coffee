@@ -13,7 +13,9 @@ Router.route '/projects/:_id',
     projectId = this.params._id
     [Meteor.subscribe('subjects', projectId),
      Meteor.subscribe('sources', projectId),
-     Meteor.subscribe('subject_source_ids', projectId)]
+     Meteor.subscribe('subject_source_ids', projectId),
+     Meteor.subscribe('metrics', projectId),
+     Meteor.subscribe('measurements', projectId)]
 
 Router.route '/', name: 'home'
 

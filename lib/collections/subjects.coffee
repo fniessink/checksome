@@ -4,6 +4,9 @@ Subjects.allow
   update: (userId, subject) -> ownsProjectItem userId, subject
   remove: (userId, subject) -> ownsProjectItem userId, subject
 
+Subjects.deny
+  remove: (userId, subject) -> SubjectSourceIds.find({subject: subject._id}).count() > 0
+
 Meteor.methods
   subjectInsert: (subjectAttributes) ->
     check this.userId, String
