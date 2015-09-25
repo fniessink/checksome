@@ -39,6 +39,7 @@
   "subject_source_id": "Subject-bron-id",
   "Submit": "Voeg toe",
   "submitted_by": "Ingevoerd door <span class='author'>%s</span> op <span class='date'>%s</span>.",
+  "submitted_on": "Ingevoerd op <span class='date'>%s</span>.",
   "Title": "Titel",
   "title_placeholder": "Titel van uw %s",
   "url_placeholder": "Specificeer de URL",

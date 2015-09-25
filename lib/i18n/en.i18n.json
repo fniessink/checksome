@@ -6,6 +6,7 @@
   "page_not_found": "Sorry, we couldn't find a page at this address.",
   "subject_source_id": "subject-source-id",
   "submitted_by": "Submitted by <span class='author'>%s</span> on <span class='date'>%s</span>.",
+  "submitted_on": "Submitted on <span class='date'>%s</span>.",
   "title_placeholder": "Name your %s",
   "url_placeholder": "Specify the URL"
 }
