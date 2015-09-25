@@ -7,12 +7,12 @@ collection.
 
       handleJob: ->
         for subject_source_id in SubjectSourceIds.find().fetch()
-          source_id = subject_source_id.source
-          source = Sources.findOne({_id: source_id})
+          source = Sources.findOne({_id: subject_source_id.source})
           if source.type != 'sonar'
             continue
+          subject = Subjects.findOne({_id: subject_source_id.subject})
+          title = "NCLOC " + subject.title
           sonar_key = subject_source_id.title
-          title = "NCLOC " + sonar_key
           try
             result = HTTP.get source.url + 'api/resources?resource=' + sonar_key + '&metrics=true'
             error_message = ''
@@ -33,6 +33,6 @@ collection.
             projectId: source.projectId
             title: title
             description: description
-          console.log(title, description, source.type, source.url, ncloc)
+          console.log(title, description, sonar_key, source.type, source.url, ncloc)
 
     Job.push new SonarJob
