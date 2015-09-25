@@ -17,9 +17,12 @@ Meteor.publish 'metrics', (projectId) ->
   check projectId, String
   Metrics.find {projectId: projectId}
 
-Meteor.publish 'measurements', (projectId) ->
+Meteor.publish 'measurements', (projectId, options) ->
   check projectId, String
-  Measurements.find {projectId: projectId}
+  check options,
+    sort: Object
+    limit: Number
+  Measurements.find {projectId: projectId}, options
 
 Meteor.publish 'notifications', ->
   Notifications.find {userId: this.userId}
