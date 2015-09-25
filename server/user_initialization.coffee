@@ -7,6 +7,8 @@ Accounts.onCreateUser (options, user) ->
     submitted: new Date
     kind: 'project'
   projectId = Projects.insert tutorial
+  project = Projects.findOne({_id: projectId})
+  createMetrics project
   source1 =
     title: "Sonar"
     description: "This is an example of a source. In this case Sonar, a tool
