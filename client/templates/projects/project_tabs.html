@@ -26,11 +26,6 @@
           {{_ "Measurements"}} <span class="badge">{{measurements_count}}</span>
         </a>
       </li>
-      <li role="presentation">
-        <a href="#report" aria-controls="report" role="tab" data-toggle="tab">
-          {{_ "Report"}}
-        </a>
-      </li>
       {{#if can_add_item}}
         <li class="pull-right">
           <button class="btn btn-primary add-kind">
@@ -54,9 +49,6 @@
       </div>
       <div role="tabpanel" class="tab-pane fade" id="measurement" aria-labelled-by="metrics">
         {{> measurementsList}}
-      </div>
-      <div role="tabpanel" class="tab-pane fade" id="report" aria-labelled-by="report">
-        {{> projectReport}}
       </div>
     </div>
   </div>

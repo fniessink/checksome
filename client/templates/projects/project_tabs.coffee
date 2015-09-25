@@ -20,7 +20,7 @@ Template.projectTabs.helpers
   translated_kind: -> TAPi18n.__ Session.get 'currentProjectTab'
   can_add_item: ->
     currentTab = Session.get 'currentProjectTab'
-    if currentTab == 'report' or currentTab == 'metric' or currentTab == 'measurement'
+    if currentTab == 'metric' or currentTab == 'measurement'
       return false
     if currentTab == 'subject_source_ids' and (Sources.find().count() == 0 or Subjects.find().count() == 0)
       return false
