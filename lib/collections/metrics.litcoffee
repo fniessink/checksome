@@ -30,3 +30,4 @@ Create the metric
           projectId: project._id
           title: "NCLOC"
           description: "Size of the software in non-commented lines of code"
+          target: 10000  # NCLOC

@@ -10,25 +10,29 @@ collection.
           source = Sources.findOne({_id: subject_source_id.source})
           if source.type != 'sonar'
             continue
-          subject = Subjects.findOne({_id: subject_source_id.subject})
-          title = "NCLOC " + subject.title
-          sonar_key = subject_source_id.title
-          result = @get_json source.url, sonar_key
-          if result.json
-            for metric in result.json[0]['msr']
-              if metric['key'] == 'ncloc'
-                ncloc = metric['val']
-          else
-            ncloc = -1
-          if result.error_message
-            description = result.error_message
-          else
-            description = ncloc + ' LOC'
-          insertMeasurement
-            projectId: source.projectId
-            title: title
-            description: description
-          console.log(title, description, sonar_key, source.type, source.url, ncloc)
+          @measure_ncloc subject_source_id, source
+
+      measure_ncloc: (subject_source_id, source) ->
+        metric = new NCLOC()
+        subject = Subjects.findOne {_id: subject_source_id.subject}
+        title = metric.title() + " " + subject.title
+        sonar_key = subject_source_id.title
+        result = @get_json source.url, sonar_key
+        if result.json
+          for sonar_metric in result.json[0]['msr']
+            if sonar_metric['key'] == 'ncloc'
+              ncloc = sonar_metric['val']
+        else
+          ncloc = -1
+        if result.error_message
+          description = result.error_message
+        else
+          description = ncloc + ' LOC ' + metric.meets_target(ncloc)
+        insertMeasurement
+          projectId: source.projectId
+          title: title
+          description: description
+        console.log(title, description, sonar_key, source.type, source.url, ncloc)
 
       get_json: (sonar_url, sonar_key) ->
         try

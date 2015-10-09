@@ -1,7 +1,11 @@
 <template name="metricsList">
   <div class="sortable">
     {{#each metrics}}
-      {{> item}}
+      {{#if item_is_edited}}
+        {{> metricEdit}}
+      {{else}}
+        {{> item}}
+      {{/if}}
     {{/each}}
   </div>
 </template>
