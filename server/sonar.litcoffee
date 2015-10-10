@@ -27,11 +27,15 @@ collection.
         if result.error_message
           description = result.error_message
         else
-          description = ncloc + ' LOC ' + metric.meets_target(ncloc)
+          target_met = metric.meets_target(ncloc)
+          description = ncloc + ' LOC'
         insertMeasurement
           projectId: source.projectId
           title: title
           description: description
+          value: ncloc
+          target: metric.target
+          target_met: target_met
         console.log(title, description, sonar_key, source.type, source.url, ncloc)
 
       get_json: (sonar_url, sonar_key) ->

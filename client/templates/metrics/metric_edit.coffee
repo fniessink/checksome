@@ -18,7 +18,7 @@ Template.metricEdit.events
     metricProperties =
       title: $(e.target).find('[name=title]').val()
       description: $(e.target).find('[name=description]').val()
-      target: $(e.target).find('[name=target]').val()
+      target: parseInt($(e.target).find('[name=target]').val(), 10)
 
     Session.set 'metric_title', {}
     errors = validateMetric metricProperties
