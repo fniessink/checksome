@@ -1,5 +1,6 @@
 {
   "add_kind": "Voeg %s toe",
+  "added_on": "Toegevoegd op <span class='date'>%s</span>.",
   "Cancel": "Annuleren",
   "Delete": "Verwijder",
   "delete_kind": "Verwijder %s?",
@@ -9,8 +10,9 @@
   "If this is your first time here, join by creating an account":
     "Als u hier voor het eerst bent, maak dan een account aan",
   "item_added_notification": "%s voegde %s %s toe aan %s",
-  "subject": "subject",
-  "Subjects": "Subjecten",
+  "Items can be reordered by drag and drop":
+    "Items kunnen met drag en drop van volgorde worden veranderd",
+  "last_updated_on": "Voor het laatst bijgewerkt op <span class='date'>%s</span>.",
   "Mark all notifications as read": "Markeer alle meldingen als gelezen",
   "Metrics": "Metrieken",
   "New project": "Nieuw project",
@@ -34,12 +36,11 @@
   "Select sources": "Selectie van bronnen",
   "source": "bron",
   "Sources": "Bronnen",
-  "Items can be reordered by drag and drop":
-    "Items kunnen met drag en drop van volgorde worden veranderd",
+  "subject": "subject",
+  "Subjects": "Subjecten",
   "subject_source_id": "Subject-bron-id",
   "Submit": "Voeg toe",
   "submitted_by": "Ingevoerd door <span class='author'>%s</span> op <span class='date'>%s</span>.",
-  "submitted_on": "Ingevoerd op <span class='date'>%s</span>.",
   "Title": "Titel",
   "title_placeholder": "Titel van uw %s",
   "url_placeholder": "Specificeer de URL",

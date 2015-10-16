@@ -1,4 +1,5 @@
 {
+  "added_on": "Added on <span class='date'>%s</span>.",
   "add_kind": "Add %s",
   "delete_kind": "Delete %s?",
   "description_placeholder": "Describe your %s",
@@ -6,7 +7,7 @@
   "page_not_found": "Sorry, we couldn't find a page at this address.",
   "subject_source_id": "subject-source-id",
   "submitted_by": "Submitted by <span class='author'>%s</span> on <span class='date'>%s</span>.",
-  "submitted_on": "Submitted on <span class='date'>%s</span>.",
   "title_placeholder": "Name your %s",
+  "last_updated_on": "Last updated on <span class='date'>%s</span>.",
   "url_placeholder": "Specify the URL"
 }

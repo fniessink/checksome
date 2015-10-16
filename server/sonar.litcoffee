@@ -22,14 +22,12 @@ collection.
           for sonar_metric in result.json[0]['msr']
             if sonar_metric['key'] == 'ncloc'
               ncloc = sonar_metric['val']
-        else
-          ncloc = -1
         if result.error_message
           description = result.error_message
         else
           target_met = metric.meets_target(ncloc)
           description = ncloc + ' LOC'
-        insertMeasurement
+        insertOrUpdateMeasurement
           projectId: source.projectId
           title: title
           description: description

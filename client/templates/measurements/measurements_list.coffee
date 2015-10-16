@@ -1,2 +1,2 @@
 Template.measurementsList.helpers
-  measurements: -> Measurements.find {}, {sort: {submitted: -1}}
+  measurements: -> Measurements.find {}, {sort: {updated: -1}}
