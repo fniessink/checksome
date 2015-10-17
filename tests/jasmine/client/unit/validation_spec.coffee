@@ -89,8 +89,9 @@ describe 'A subject', ->
   beforeEach ->
     this.subject =
       title: 'Title'
+      type: 'application'
 
-  it 'is valid when it has a title', ->
+  it 'is valid when it has a title and a type', ->
     expect(validateSubject(this.subject)).toEqual {}
 
   it 'is invalid when it has no title', ->

@@ -44,18 +44,20 @@ Accounts.onCreateUser (options, user) ->
     kind: 'source'
   source3Id = Sources.insert source3
   subject1 =
-    title: "Subject 1"
+    title: "Component 1"
     description: "This is an example of a subject. Subjects are technical
       components, teams, and other things that can be measured."
     projectId: projectId
+    type: 'component'
     userId: user._id
     position: 0
     submitted: new Date
     kind: 'subject'
   subject1Id = Subjects.insert subject1
   subject2 =
-    title: "Subject 2"
+    title: "Component 2"
     description: "This is another example of a subject."
+    type: 'component'
     projectId: projectId
     userId: user._id
     position: 1

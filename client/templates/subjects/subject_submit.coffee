@@ -9,6 +9,7 @@ Template.subjectSubmit.events
     subject =
       title: $(e.target).find('[name=title]').val()
       description: $(e.target).find('[name=description]').val()
+      type: $(e.target).find('[name=subject_type]').val()
       projectId: template.data._id
 
     Session.set 'subject_title', {}

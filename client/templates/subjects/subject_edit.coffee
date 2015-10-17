@@ -8,6 +8,7 @@ Template.subjectEdit.events
     subjectProperties =
       title: $(e.target).find('[name=title]').val()
       description: $(e.target).find('[name=description]').val()
+      type: $(e.target).find('[name=subject_type]').val()
 
     Session.set 'subject_title', {}
     errors = validateSubject subjectProperties

@@ -1,5 +1,10 @@
 @Subjects = new Mongo.Collection 'subjects'
 
+@subject_types = ->
+  [{_id: 'component', title: 'Component'},
+   {_id: 'application', title: 'Application'},
+   {_id: 'team', title: 'Team'}]
+
 Subjects.allow
   update: (userId, subject) -> ownsProjectItem userId, subject
   remove: (userId, subject) -> ownsProjectItem userId, subject

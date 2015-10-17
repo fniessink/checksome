@@ -1,0 +1,12 @@
+<template name="subjectType">
+  <div class="form-group">
+    <div class="controls">
+      <label for="subject_type">{{_ "Type"}}</label>
+      <select name="subject_type" class="form-control">
+        {{#each subject_types}}
+          <option selected="{{type_is_selected}}" value="{{_id}}">{{title}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+</template>
