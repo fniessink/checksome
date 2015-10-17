@@ -1,0 +1,12 @@
+<template name="sourceType">
+  <div class="form-group">
+    <div class="controls">
+      <label for="source_type">{{_ "Type"}}</label>
+      <select name="source_type" class="form-control">
+        {{#each source_types}}
+          <option selected="{{type_is_selected}}" value="{{_id}}">{{title}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+</template>

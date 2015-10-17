@@ -2,16 +2,7 @@
   <form name="source" class="item-form form">
     {{> titleControl extendContext 'control_id' 'source_title'}}
     {{> descriptionControl}}
-    <div class="form-group">
-      <div class="controls">
-        <label for="type">{{_ "Type"}}</label>
-        <select name="type" class="form-control">
-          {{#each types}}
-            <option selected="{{typeIsSelected}}" value="{{_id}}">{{title}}</option>
-          {{/each}}
-        </select>
-      </div>
-    </div>
+    {{> sourceType}}
     {{> urlControl extendContext 'control_id' 'source_url'}}
     <div class="form-group">
       <button type="submit" class="btn btn-primary submit">{{_ "OK"}}</button>

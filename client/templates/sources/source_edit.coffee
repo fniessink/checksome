@@ -1,10 +1,6 @@
 Template.sourceEdit.helpers
   hasNoSubjects: ->
     Subjects.find({sources: this._id}).count() == 0
-  types: -> source_types()
-  typeIsSelected: ->
-    source = Template.parentData()
-    this._id == source.type
 
 Template.sourceEdit.events
   'submit form': (e, template) ->
@@ -13,7 +9,7 @@ Template.sourceEdit.events
     sourceProperties =
       title: $(e.target).find('[name=title]').val()
       description: $(e.target).find('[name=description]').val()
-      type: $(e.target).find('[name=type]').val()
+      type: $(e.target).find('[name=source_type]').val()
       url: $(e.target).find('[name=url]').val()
 
     Session.set 'source_title', {}

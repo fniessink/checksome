@@ -1,6 +1,5 @@
 Template.sourceSubmit.helpers
   has_sources: -> Sources.find().count() > 0
-  types: -> source_types()
 
 Template.sourceSubmit.events
   'submit form': (e, template) ->
@@ -9,7 +8,7 @@ Template.sourceSubmit.events
     source =
       title: $(e.target).find('[name=title]').val()
       description: $(e.target).find('[name=description]').val()
-      type: $(e.target).find('[name=type]').val()
+      type: $(e.target).find('[name=source_type]').val()
       url: $(e.target).find('[name=url]').val()
       projectId: template.data._id
 

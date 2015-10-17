@@ -2,17 +2,7 @@
   <form name="source" class="item-form form">
     {{> titleControl control_id='source_title' title='' kind='source'}}
     {{> descriptionControl description='' kind='source'}}
-    <div class="form-group">
-      <div class="controls">
-        <label for="type">{{_ "Type"}}</label>
-        <select name="type" class="form-control">
-          {{#each types}}
-            <option value="{{_id}}">{{title}}</option>
-          {{/each}}
-        </select>
-        <span class="help-block"></span>
-      </div>
-    </div>
+    {{> sourceType}}
     {{> urlControl control_id='source_url' url='' kind='source'}}
     <button type="submit" class="btn btn-primary submit">{{_ "OK"}}</button>
     {{#if has_sources}}
