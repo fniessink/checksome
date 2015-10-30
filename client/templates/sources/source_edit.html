@@ -1,9 +1,9 @@
 <template name="sourceEdit">
   <form name="source" class="item-form form">
-    {{> titleControl extendContext 'control_id' 'source_title'}}
+    {{> titleControl}}
     {{> descriptionControl}}
     {{> sourceType}}
-    {{> urlControl extendContext 'control_id' 'source_url'}}
+    {{> urlControl}}
     <div class="form-group">
       <button type="submit" class="btn btn-primary submit">{{_ "OK"}}</button>
       <button type="button" class="btn btn-default cancel">{{_ "Cancel"}}</button>

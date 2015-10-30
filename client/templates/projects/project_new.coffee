@@ -24,14 +24,10 @@ Template.projectNew.events
       description: $(e.target).find('[name=description]').val()
       members: $(e.target).find('[name=members]').val() or []
 
-    Session.set 'project_title', {}
     Session.set 'projectNewErrors', {}
     errors = validateProject project
-    if errors.title
-      Session.set 'project_title', errors
     if errors.members
       Session.set 'projectNewErrors', errors
-    if errors.title or errors.members
       return false
 
     Meteor.call 'projectInsert', project, (error, result) ->

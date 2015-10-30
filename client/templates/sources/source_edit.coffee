@@ -12,15 +12,6 @@ Template.sourceEdit.events
       type: $(e.target).find('[name=source_type]').val()
       url: $(e.target).find('[name=url]').val()
 
-    Session.set 'source_title', {}
-    errors = validateSource sourceProperties
-    if errors.title
-      Session.set 'source_title', errors
-    if errors.url
-      Session.set 'source_url', errors
-    if errors.title or errors.url
-      return false
-
     Sources.update this._id, {$set: sourceProperties}, (error) ->
       if error
         throwError error.reason

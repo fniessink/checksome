@@ -21,7 +21,6 @@ Template.metricEdit.events
     errors = validateMetric metricProperties
     if errors.target
       Session.set 'metric_target', errors
-    if errors.target
       return false
 
     Metrics.update this._id, {$set: metricProperties}, (error) ->

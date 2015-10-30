@@ -12,12 +12,6 @@ Template.subjectSubmit.events
       type: $(e.target).find('[name=subject_type]').val()
       projectId: template.data._id
 
-    Session.set 'subject_title', {}
-    errors = validateSubject subject
-    if errors.title
-      Session.set 'subject_title', errors
-      return false
-
     Meteor.call 'subjectInsert', subject, (error, subjectId) ->
       if error
         throwError error.reason

@@ -1,7 +1,7 @@
 <template name="subjectSubmit">
   <form name="subject" class="item-form form">
-    {{> titleControl control_id='subject_title' title='' kind='subject'}}
-    {{> descriptionControl description='' kind='subject'}}
+    {{> titleControl extendContext 'title' ''}}
+    {{> descriptionControl extendContext 'description' ''}}
     {{> subjectType}}
     <button type="submit" class="btn btn-primary submit">{{_ "OK"}}</button>
     {{#if has_subjects}}

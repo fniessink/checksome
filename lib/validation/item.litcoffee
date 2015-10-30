@@ -14,16 +14,5 @@ First, check that the item has the right structure.
 
 Then, check that a title is present.
 
-      errors = {}
       if item.title == ''
-        if Meteor.isServer
-
-When running on the server, a missing title is a fatal error.
-
-          throw new Meteor.Error('invalid-item', 'You must add a title to an item')
-        else
-
-When running on the client, we will tell the user to provide a title.
-
-          errors.title = TAPi18n.__ "Please provide a title"
-      return errors
+        throw new Meteor.Error('invalid-item', 'You must add a title to an item')

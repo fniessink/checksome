@@ -12,15 +12,6 @@ Template.sourceSubmit.events
       url: $(e.target).find('[name=url]').val()
       projectId: template.data._id
 
-    Session.set 'source_title', {}
-    errors = validateSource source
-    if errors.title
-      Session.set 'source_title', errors
-    if errors.url
-      Session.set 'source_url', errors
-    if errors.title or errors.url
-      return false
-
     Meteor.call 'sourceInsert', source, (error, sourceId) ->
       if error
         throwError error.reason

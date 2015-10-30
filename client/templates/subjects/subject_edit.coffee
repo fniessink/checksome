@@ -10,12 +10,6 @@ Template.subjectEdit.events
       description: $(e.target).find('[name=description]').val()
       type: $(e.target).find('[name=subject_type]').val()
 
-    Session.set 'subject_title', {}
-    errors = validateSubject subjectProperties
-    if errors.title
-      Session.set 'subject_title', errors
-      return false
-
     Meteor.call 'subjectEdit', this, subjectProperties, (error, result) ->
       if error
         throwError error.reason

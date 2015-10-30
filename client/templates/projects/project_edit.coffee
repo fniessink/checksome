@@ -24,15 +24,11 @@ Template.projectEdit.events
       description: $(e.target).find('[name=description]').val()
       members: $(e.target).find('[name=members]').val() or []
 
-    Session.set 'project_title', {}
     Session.set 'projectEditErrors', {}
     errors = validateProject projectProperties
 
-    if errors.title
-      Session.set 'project_title', errors
     if errors.members
       Session.set 'projectEditErrors', errors
-    if errors.title or errors.members
       return false
 
     Projects.update this._id, {$set: projectProperties}, (error) ->

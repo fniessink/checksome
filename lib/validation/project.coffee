@@ -1,7 +1,8 @@
 @validateProject = (project) ->
   check project, Match.ObjectIncluding
     members: [String]
-  errors = validateItem project
+  validateItem project
+  errors = {}
   if project.members.length == 0
     if Meteor.isServer
       throw new Meteor.Error('invalid-project',
