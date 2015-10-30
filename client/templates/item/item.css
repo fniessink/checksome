@@ -26,3 +26,8 @@
     display: block;
     float: right;
     margin-top: 7px; }
+
+.item-form h3 {
+  margin: 0;
+  line-height: 1.4;
+  font-size: 18px; }

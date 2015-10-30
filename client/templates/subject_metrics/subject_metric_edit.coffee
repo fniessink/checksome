@@ -1,8 +1,8 @@
 Template.subjectMetricEdit.onCreated ->
-  Session.set Template.currentData().control_id, {}
+  Session.set 'subject_metric_target', {}
 
 errorMessage = (field) ->
-  Session.get(Template.currentData().control_id)[field]
+  Session.get('subject_metric_target')[field]
 
 Template.subjectMetricEdit.helpers
   errorMessage: errorMessage
@@ -16,10 +16,8 @@ Template.subjectMetricEdit.events
     e.preventDefault()
 
     subjectMetricProperties =
-      description: $(e.target).find('[name=description]').val()
       target: parseInt($(e.target).find('[name=target]').val(), 10)
 
-    Session.set 'subject_metric_title', {}
     errors = validateSubjectMetric subjectMetricProperties
     if errors.target
       Session.set 'subject_metric_target', errors

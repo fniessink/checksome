@@ -1,10 +1,10 @@
 <template name="subjectMetricEdit">
   <form name="subject_metric" class="item-form form">
-    {{> descriptionControl}}
-    <div class="form-group">
+    <h3>{{title}}</h3>
+    <div class="form-group {{errorClass 'target'}}">
       <div class="controls">
         <label for="target">{{_ "Target"}}</label>
-        <input type="number" name="target" id="metric_target" value="{{target}}">
+        <input type="number" name="target" id="subject_metric_target" value="{{target}}">
         <span class="help-block">{{errorMessage 'target'}}</span>
       </div>
     </div>
