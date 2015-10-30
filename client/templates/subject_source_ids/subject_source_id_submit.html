@@ -1,7 +1,13 @@
 <template name="subjectSourceIdSubmit">
   <form name="subject" class="item-form form">
-    {{> titleControl control_id='subject_source_id_title' title='' kind='subject_source_id'}}
-    {{> descriptionControl description='' kind='subject_source_id'}}
+    <div class="form-group">
+      <div class="controls">
+        <label for="id">{{_ 'Subject-source-id'}}</label>
+        <input name="id" id="id" type="text" value="{{id}}"
+               required="required"
+               placeholder="{{_ 'Subject-source-id'}}" class="form-control"/>
+      </div>
+    </div>
     <div class="form-group">
       <div class="controls">
         <label for="subject">{{_ "Subject"}}</label>

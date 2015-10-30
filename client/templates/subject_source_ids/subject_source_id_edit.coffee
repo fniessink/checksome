@@ -13,16 +13,9 @@ Template.subjectSourceIdEdit.events
     e.preventDefault()
 
     idProperties =
-      title: $(e.target).find('[name=title]').val()
-      description: $(e.target).find('[name=description]').val()
+      id: $(e.target).find('[name=id]').val()
       subject: $(e.target).find('[name=subject]').val()
       source: $(e.target).find('[name=source]').val()
-
-    Session.set 'subject_source_id_title', {}
-    errors = validateSubject idProperties
-    if errors.title
-      Session.set 'subject_source_id_title', errors
-      return false
 
     SubjectSourceIds.update this._id, {$set: idProperties}, (error) ->
       if error

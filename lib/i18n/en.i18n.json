@@ -4,10 +4,10 @@
   "delete_kind": "Delete %s?",
   "description_placeholder": "Describe your %s",
   "item_added_notification": "%s added %s %s to %s",
+  "last_updated_on": "Last updated on <span class='date'>%s</span>.",
   "page_not_found": "Sorry, we couldn't find a page at this address.",
   "subject_source_id": "subject-source-id",
   "submitted_by": "Submitted by <span class='author'>%s</span> on <span class='date'>%s</span>.",
   "title_placeholder": "Name your %s",
-  "last_updated_on": "Last updated on <span class='date'>%s</span>.",
   "url_placeholder": "Specify the URL"
 }
