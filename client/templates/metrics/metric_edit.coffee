@@ -16,17 +16,12 @@ Template.metricEdit.events
     e.preventDefault()
 
     metricProperties =
-      title: $(e.target).find('[name=title]').val()
-      description: $(e.target).find('[name=description]').val()
       target: parseInt($(e.target).find('[name=target]').val(), 10)
 
-    Session.set 'metric_title', {}
     errors = validateMetric metricProperties
-    if errors.title
-      Session.set 'metric_title', errors
     if errors.target
       Session.set 'metric_target', errors
-    if errors.title or errors.target
+    if errors.target
       return false
 
     Metrics.update this._id, {$set: metricProperties}, (error) ->

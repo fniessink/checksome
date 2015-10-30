@@ -31,3 +31,9 @@
   margin: 0;
   line-height: 1.4;
   font-size: 18px; }
+
+  .item-form h3 span {
+    font-weight: normal;
+    font-size: 14px;
+    display: inline-block;
+    color: #aaaaaa; }
