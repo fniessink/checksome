@@ -29,9 +29,9 @@ Create the subject metric
 Create/remove subject-metrics when a subject is added/removed:
 
     @insertSubjectMetricsForSubject = (subject) ->
-      metrics = Metrics.find().fetch()
+      metrics = Metrics.find({subject_types: subject.type}).fetch()
       projectId = subject.projectId
       subjectMetricInsert({title: subject.title + ' ' + metric.title, subject: subject._id, metric: metric._id, projectId: projectId}) for metric in metrics
 
     @deleteSubjectMetricsForSubject = (subject) ->
-      SubjectMetrics.remove({subject: subject._id})
+      SubjectMetrics.remove {subject: subject._id}

@@ -11,8 +11,7 @@ Accounts.onCreateUser (options, user) ->
   createMetrics project
   source1 =
     title: "Sonar"
-    description: "This is an example of a source. In this case Sonar, a tool
-      used for measuring the quality of source code."
+    description: "Sonar is a tool for measuring the quality of source code."
     type: 'sonar'
     url: 'http://sonar/'
     projectId: projectId
@@ -23,7 +22,7 @@ Accounts.onCreateUser (options, user) ->
   source1Id = Sources.insert source1
   source2 =
     title: "Jenkins"
-    description: "An example source, in this case Jenkins, a CI-server."
+    description: "Jenkins is a tool for continuous integration."
     type: 'jenkins'
     url: 'http://jenkins/'
     projectId: projectId
@@ -43,25 +42,4 @@ Accounts.onCreateUser (options, user) ->
     submitted: new Date
     kind: 'source'
   source3Id = Sources.insert source3
-  subject1 =
-    title: "Component 1"
-    description: "This is an example of a subject. Subjects are technical
-      components, teams, and other things that can be measured."
-    projectId: projectId
-    type: 'component'
-    userId: user._id
-    position: 0
-    submitted: new Date
-    kind: 'subject'
-  subject1Id = Subjects.insert subject1
-  subject2 =
-    title: "Component 2"
-    description: "This is another example of a subject."
-    type: 'component'
-    projectId: projectId
-    userId: user._id
-    position: 1
-    submitted: new Date
-    kind: 'subject'
-  subject2Id = Subjects.insert subject2
   return user

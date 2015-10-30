@@ -34,6 +34,16 @@ Meteor.methods
     createNotification(member, user._id, subject.projectId, text) for member in project.members
     return subject._id
 
+  subjectEdit: (subject, subjectAttributes) ->
+    validateSubject subject
+    validateSubject subjectAttributes
+    type_changed = subject.type != subjectAttributes.type
+    if type_changed
+      deleteSubjectMetricsForSubject subject
+    Subjects.update subject._id, {$set: subjectAttributes}
+    if type_changed
+      insertSubjectMetricsForSubject Subjects.findOne subject._id
+
   subjectRemove: (subject) ->
     validateSubject subject
     deleteSubjectMetricsForSubject subject

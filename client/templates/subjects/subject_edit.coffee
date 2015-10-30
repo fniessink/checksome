@@ -16,7 +16,7 @@ Template.subjectEdit.events
       Session.set 'subject_title', errors
       return false
 
-    Subjects.update this._id, {$set: subjectProperties}, (error) ->
+    Meteor.call 'subjectEdit', this, subjectProperties, (error, result) ->
       if error
         throwError error.reason
       else
