@@ -109,3 +109,15 @@ describe 'A subject-source-id', ->
 
   it 'is valid when it has a title, subject, and source', ->
     expect(validateSubjectSourceId(this.subject_source_id)).toEqual {}
+
+
+describe 'A subject-metric', ->
+
+    beforeEach ->
+      this.suject_metric =
+        title: 'Component size'
+        subject: 'subject_id'
+        metric: 'metric_id'
+
+    it 'is valid when it has a title, subject, and metric', ->
+      expect(validateSubjectMetric(this.subject_metric)).toEqual {}

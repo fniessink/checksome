@@ -1,0 +1,11 @@
+<template name="subjectMetricsList">
+  <div class="sortable">
+    {{#each subject_metrics}}
+      {{#if item_is_edited}}
+        {{> subjectMetricEdit}}
+      {{else}}
+        {{> item}}
+      {{/if}}
+    {{/each}}
+  </div>
+</template>

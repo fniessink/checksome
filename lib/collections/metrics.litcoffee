@@ -1,4 +1,5 @@
-`Metrics` are ...
+`Metrics` are attributes that can be measured. For example, size, velocity,
+and complexity.
 
     @Metrics = new Mongo.Collection 'metrics'
 

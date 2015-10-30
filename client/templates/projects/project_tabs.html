@@ -22,6 +22,11 @@
         </a>
       </li>
       <li role="presentation">
+        <a href="#subject_metric" aria-controls="subject_metrics" role="tab" data-toggle="tab">
+          {{_ "Subject-metrics"}} <span class="badge">{{subject_metrics_count}}</span >
+        </a>
+      </li>
+      <li role="presentation">
         <a href="#measurement" aria-controls="measurements" role="tab" data-toggle="tab">
           {{_ "Measurements"}} <span class="badge">{{measurements_count}}</span>
         </a>
@@ -46,6 +51,9 @@
       </div>
       <div role="tabpanel" class="tab-pane fade" id="metric" aria-labelled-by="metrics">
         {{> metricsList}}
+      </div>
+      <div role="tabpanel" class="tab-pane fade" id="subject_metric" aria-labelled-by="subject_metrics">
+        {{> subjectMetricsList}}
       </div>
       <div role="tabpanel" class="tab-pane fade" id="measurement" aria-labelled-by="metrics">
         {{> measurementsList}}

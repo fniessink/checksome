@@ -1,0 +1,16 @@
+<template name="subjectMetricEdit">
+  <form name="subject_metric" class="item-form form">
+    {{> descriptionControl}}
+    <div class="form-group">
+      <div class="controls">
+        <label for="target">{{_ "Target"}}</label>
+        <input type="number" name="target" id="metric_target" value="{{target}}">
+        <span class="help-block">{{errorMessage 'target'}}</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary submit">{{_ "OK"}}</button>
+      <button type="button" class="btn btn-default cancel">{{_ "Cancel"}}</button>
+    </div>
+  </form>
+</template>

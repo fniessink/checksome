@@ -16,11 +16,12 @@ Template.projectTabs.helpers
   subjects_count: -> Subjects.find().count()
   subject_source_ids_count: -> SubjectSourceIds.find().count()
   metrics_count: -> Metrics.find().count()
+  subject_metrics_count: -> SubjectMetrics.find().count()
   measurements_count: -> Measurements.find().count()
   translated_kind: -> TAPi18n.__ Session.get 'currentProjectTab'
   can_add_item: ->
     currentTab = Session.get 'currentProjectTab'
-    if currentTab == 'metric' or currentTab == 'measurement'
+    if currentTab == 'metric' or currentTab == 'subject_metric' or currentTab == 'measurement'
       return false
     if currentTab == 'subject_source_ids' and (Sources.find().count() == 0 or Subjects.find().count() == 0)
       return false

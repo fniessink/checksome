@@ -17,6 +17,10 @@ Meteor.publish 'metrics', (projectId) ->
   check projectId, String
   Metrics.find {projectId: projectId}
 
+Meteor.publish 'subject_metrics', (projectId) ->
+  check projectId, String
+  SubjectMetrics.find {projectId: projectId}
+
 Meteor.publish 'measurements', (projectId, options) ->
   check projectId, String
   check options,
