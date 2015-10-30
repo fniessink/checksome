@@ -6,7 +6,7 @@ First, check that the subject metric has the right structure and is a valid
 item.
 
       check subjectMetric, Match.ObjectIncluding
-        target: Number
+        target: Match.Optional(Number)
 
 Next, check that the target is zero or greater.
 
