@@ -32,7 +32,7 @@ Template.deleteSubject.helpers
 Template.deleteSubject.events
   'click .delete': (e) ->
     delete_subject = =>
-      Subjects.remove this._id
+      Meteor.call 'subjectRemove', this
       stop_editing()
     # Make sure the backdrop is hidden before we do anything.
     $('#deleteSubject').modal('hide').on('hidden.bs.modal', delete_subject)

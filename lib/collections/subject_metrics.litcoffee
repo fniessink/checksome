@@ -8,7 +8,7 @@ Updates of subject metrics are allowed when the user is a member of the project.
 
     SubjectMetrics.allow
       update: (userId, subjectMetric) -> ownsProjectItem userId, subjectMetric
-      remove: (userId, subjectMetric) -> false
+      remove: (userId, subjectMetric) -> ownsProjectItem userId, subjectMetric
 
     @subjectMetricInsert = (subjectMetricAttributes) ->
       validateSubjectMetric subjectMetricAttributes
@@ -25,3 +25,13 @@ Create the subject metric
 
       subjectMetric._id = SubjectMetrics.insert subjectMetric
       return subjectMetric._id
+
+Create/remove subject-metrics when a subject is added/removed:
+
+    @insertSubjectMetricsForSubject = (subject) ->
+      metrics = Metrics.find().fetch()
+      projectId = subject.projectId
+      subjectMetricInsert({title: subject.title + ' ' + metric.title, subject: subject._id, metric: metric._id, projectId: projectId}) for metric in metrics
+
+    @deleteSubjectMetricsForSubject = (subject) ->
+      SubjectMetrics.remove({subject: subject._id})
