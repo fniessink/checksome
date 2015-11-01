@@ -22,19 +22,16 @@ collection.
           for sonar_metric in result.json[0]['msr']
             if sonar_metric['key'] == 'ncloc'
               ncloc = sonar_metric['val']
-        if result.error_message
-          description = result.error_message
-        else
-          target_met = metric.meets_target(ncloc)
-          description = ncloc + ' LOC'
+              target_met = metric.meets_target(ncloc)
         insertOrUpdateMeasurement
           projectId: source.projectId
           title: title
-          description: description
           value: ncloc
+          unit: "LOC"
           target: metric.target
           target_met: target_met
-        console.log(title, description, sonar_key, source.type, source.url, ncloc)
+          error_message: result.error_message
+        console.log(title, sonar_key, source.type, source.url, ncloc, result.error_message)
 
       get_json: (sonar_url, sonar_key) ->
         try
