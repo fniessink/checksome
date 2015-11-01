@@ -16,7 +16,7 @@ collection.
         metric = new NCLOC()
         subject = Subjects.findOne {_id: subject_source_id.subject}
         title = metric.title() + " " + subject.title
-        sonar_key = subject_source_id.title
+        sonar_key = subject_source_id.id
         result = @get_json source.url, sonar_key
         if result.json
           for sonar_metric in result.json[0]['msr']
