@@ -11,6 +11,7 @@ collection.
           if source.type != 'sonar'
             continue
           @measure_ncloc subject_source_id, source
+          @measure_duplication subject_source_id, source
 
       measure_ncloc: (subject_source_id, source) ->
         metric = Metrics.findOne {title: "NCLOC"}
@@ -22,19 +23,41 @@ collection.
         if result.json
           for sonar_metric in result.json[0]['msr']
             if sonar_metric['key'] == 'ncloc'
-              ncloc = sonar_metric['val']
-              target_met = ncloc_meets_target(ncloc, target)
+              value = sonar_metric['val']
+              target_met = ncloc_meets_target(value, target)
         insertOrUpdateMeasurement
           projectId: source.projectId
           subject_metric_id: subject_metric._id
           metric_title: metric.title
           subject_title: subject.title
-          value: ncloc or null
+          value: value or null
           unit: "LOC"
           target: target
           target_met: target_met or null
           error_message: result.error_message or null
-        console.log(sonar_key, source.type, source.url, ncloc, target, target_met, result.error_message)
+
+      measure_duplication: (subject_source_id, source) ->
+        metric = Metrics.findOne {title: "Duplication"}
+        subject = Subjects.findOne {_id: subject_source_id.subject}
+        subject_metric = SubjectMetrics.findOne {subject: subject._id, metric: metric._id}
+        target = subject_metric.target or metric.target
+        sonar_key = subject_source_id.id
+        result = @get_json source.url, sonar_key
+        if result.json
+          for sonar_metric in result.json[0]['msr']
+            if sonar_metric['key'] == 'duplicated_lines_density'
+              value = sonar_metric['val']
+              target_met = duplication_meets_target(value, target)
+        insertOrUpdateMeasurement
+          projectId: source.projectId
+          subject_metric_id: subject_metric._id
+          metric_title: metric.title
+          subject_title: subject.title
+          value: value or null
+          unit: "%"
+          target: target
+          target_met: target_met or null
+          error_message: result.error_message or null
 
       get_json: (sonar_url, sonar_key) ->
         try

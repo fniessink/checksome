@@ -6,7 +6,7 @@
   clear: both; }
 
 .item:hover {
-  background-color: #fcfcff; }
+  opacity: 0.9; }
 
   .item .item-content {
     float: left; }
