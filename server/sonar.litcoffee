@@ -15,6 +15,7 @@ collection.
       measure_ncloc: (subject_source_id, source) ->
         metric = new NCLOC()
         subject = Subjects.findOne {_id: subject_source_id.subject}
+        subject_metric = SubjectMetrics.findOne {subject: subject._id, metric: metric.metric._id}
         title = metric.title() + " " + subject.title
         sonar_key = subject_source_id.id
         result = @get_json source.url, sonar_key
@@ -25,12 +26,15 @@ collection.
               target_met = metric.meets_target(ncloc)
         insertOrUpdateMeasurement
           projectId: source.projectId
+          subject_metric_id: subject_metric._id
+          metric_title: metric.title()
+          subject_title: subject.title
           title: title
-          value: ncloc
+          value: ncloc or null
           unit: "LOC"
           target: metric.target
           target_met: target_met
-          error_message: result.error_message
+          error_message: result.error_message or null
         console.log(title, sonar_key, source.type, source.url, ncloc, result.error_message)
 
       get_json: (sonar_url, sonar_key) ->
