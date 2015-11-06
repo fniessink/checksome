@@ -1,11 +1,4 @@
 NCLOC metric.
 
-    class @NCLOC
-      constructor: ->
-        @metric = Metrics.findOne {title: "NCLOC"}
-
-      title: ->
-        return "NCLOC"
-
-      meets_target: (value) ->
-        return value < @metric.target
+    @ncloc_meets_target = (value, target) ->
+       return value < target

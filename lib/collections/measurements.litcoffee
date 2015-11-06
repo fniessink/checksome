@@ -1,4 +1,5 @@
-`Measurements` are ...
+`Measurements` are the value of specific metrics for specific subjects over
+a specific period of time.
 
     @Measurements = new Mongo.Collection 'measurements'
 
@@ -14,7 +15,7 @@ Insert or update a measurement.
       now = new Date()
       if previous and (previous.error_message == next.error_message) and
                       (previous.value == next.value) and
-                      (previous.target_met == next.target_met)
+                      (previous.target == next.target)
         Measurements.update previous._id, {$set: {updated: now}}
         return previous._id
       else

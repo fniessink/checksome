@@ -5,4 +5,4 @@ Template.measurement_item.helpers
 
   description: ->
     return this.error_message if this.error_message
-    return this.value + ' ' + this.unit
+    return this.value + ' ' + this.unit + '. Target is ' + this.target + ' ' + this.unit
