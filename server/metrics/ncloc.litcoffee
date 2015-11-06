@@ -8,5 +8,4 @@ NCLOC metric.
         return "NCLOC"
 
       meets_target: (value) ->
-        console.log(value, @metric.target)
         return value < @metric.target

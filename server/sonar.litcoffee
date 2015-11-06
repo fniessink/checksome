@@ -16,7 +16,6 @@ collection.
         metric = new NCLOC()
         subject = Subjects.findOne {_id: subject_source_id.subject}
         subject_metric = SubjectMetrics.findOne {subject: subject._id, metric: metric.metric._id}
-        title = metric.title() + " " + subject.title
         sonar_key = subject_source_id.id
         result = @get_json source.url, sonar_key
         if result.json
@@ -29,13 +28,12 @@ collection.
           subject_metric_id: subject_metric._id
           metric_title: metric.title()
           subject_title: subject.title
-          title: title
           value: ncloc or null
           unit: "LOC"
           target: metric.target
-          target_met: target_met
+          target_met: target_met or null
           error_message: result.error_message or null
-        console.log(title, sonar_key, source.type, source.url, ncloc, result.error_message)
+        console.log(sonar_key, source.type, source.url, ncloc, result.error_message, target_met)
 
       get_json: (sonar_url, sonar_key) ->
         try

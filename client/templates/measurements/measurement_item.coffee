@@ -1,7 +1,7 @@
 Template.measurement_item.helpers
   bg_class: ->
     return 'bg-info' if this.error_message
-    return if this.target_met then 'bg-success' else 'bg-danger'
+    if this.target_met then 'bg-success' else 'bg-danger'
 
   description: ->
     return this.error_message if this.error_message

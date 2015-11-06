@@ -12,7 +12,9 @@ Insert or update a measurement.
       validateMeasurement next
       previous = Measurements.findOne {subject_metric: next.subject_metric}, {sort: {updated: -1}}
       now = new Date()
-      if previous and (previous.error_message == next.error_message) and (previous.value == next.value)
+      if previous and (previous.error_message == next.error_message) and
+                      (previous.value == next.value) and
+                      (previous.target_met == next.target_met)
         Measurements.update previous._id, {$set: {updated: now}}
         return previous._id
       else
