@@ -32,11 +32,13 @@ Create the metric
           title: "NCLOC"
           description: "Size of the software in non-commented lines of code"
           subject_types: ['component', 'application']
-          target: 10000  # NCLOC
+          target: 10000
+          unit: " NCLOC"
       if not Metrics.findOne({projectId: project._id, title: "Duplication"})
         metricInsert
           projectId: project._id
           title: "Duplication"
           description: "Percentage of the lines of code that are duplicated"
           subject_types: ['component', 'application']
-          target: 1  # %
+          target: 1
+          unit: "%"

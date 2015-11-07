@@ -31,7 +31,7 @@ collection.
           metric_title: metric.title
           subject_title: subject.title
           value: value or null
-          unit: "LOC"
+          unit: metric.unit
           target: target
           target_met: target_met or null
           error_message: result.error_message or null
@@ -54,7 +54,7 @@ collection.
           metric_title: metric.title
           subject_title: subject.title
           value: value or null
-          unit: "%"
+          unit: metric.unit
           target: target
           target_met: target_met or null
           error_message: result.error_message or null
