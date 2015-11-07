@@ -15,4 +15,4 @@ Template.subjectMetricItem.helpers
   description: ->
     last_measurement = Measurements.findOne {subject_metric_id: this._id}, {sort: {updated: -1}}
     return last_measurement.error_message if last_measurement.error_message
-    return last_measurement.value + ' ' + last_measurement.unit + '. Target is ' + last_measurement.target + ' ' + last_measurement.unit
+    return last_measurement.value + last_measurement.unit + '. Target is ' + last_measurement.target + last_measurement.unit
