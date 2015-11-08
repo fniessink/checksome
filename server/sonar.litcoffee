@@ -25,16 +25,21 @@ collection.
             if sonar_metric['key'] == 'ncloc'
               value = sonar_metric['val']
               target_met = ncloc_meets_target(value, target)
+          error_message = null
+        else
+          value = null
+          target_met = null
+          error_message = result.error_message
         insertOrUpdateMeasurement
           projectId: source.projectId
           subject_metric_id: subject_metric._id
           metric_title: metric.title
           subject_title: subject.title
-          value: value or null
+          value: value
           unit: metric.unit
           target: target
-          target_met: target_met or null
-          error_message: result.error_message or null
+          target_met: target_met
+          error_message: result.error_message
 
       measure_duplication: (subject_source_id, source) ->
         metric = Metrics.findOne {title: "Duplication"}
@@ -48,16 +53,21 @@ collection.
             if sonar_metric['key'] == 'duplicated_lines_density'
               value = sonar_metric['val']
               target_met = duplication_meets_target(value, target)
+          error_message = null
+        else
+          value = null
+          target_met = null
+          error_message = result.error_message
         insertOrUpdateMeasurement
           projectId: source.projectId
           subject_metric_id: subject_metric._id
           metric_title: metric.title
           subject_title: subject.title
-          value: value or null
+          value: value
           unit: metric.unit
           target: target
-          target_met: target_met or null
-          error_message: result.error_message or null
+          target_met: target_met
+          error_message: result.error_message 
 
       get_json: (sonar_url, sonar_key) ->
         try

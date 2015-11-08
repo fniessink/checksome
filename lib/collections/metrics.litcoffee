@@ -42,3 +42,11 @@ Create the metric
           subject_types: ['component', 'application']
           target: 1
           unit: "%"
+      if not Metrics.findOne({projectId: project._id, title: "Test result"})
+        metricInsert
+          projectId: project._id
+          title: "Test result"
+          description: "Number of failed or skipped tests"
+          subject_types: ['component', 'application']
+          target: 0
+          unit: " tests skipped or failed"
