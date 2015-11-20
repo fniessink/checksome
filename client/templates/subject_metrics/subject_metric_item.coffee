@@ -9,10 +9,12 @@ Template.subjectMetricItem.helpers
 
   bg_class: ->
     last_measurement = Measurements.findOne {subject_metric_id: this._id}, {sort: {updated: -1}}
+    return '' if not last_measurement
     return 'bg-info' if last_measurement.error_message
     if last_measurement.target_met then 'bg-success' else 'bg-danger'
 
   description: ->
     last_measurement = Measurements.findOne {subject_metric_id: this._id}, {sort: {updated: -1}}
+    return 'No measurements available.' if not last_measurement
     return last_measurement.error_message if last_measurement.error_message
     return last_measurement.value + last_measurement.unit + '. Target is ' + last_measurement.target + last_measurement.unit
