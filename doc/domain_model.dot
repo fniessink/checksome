@@ -1,0 +1,19 @@
+digraph {
+  source [label="Source"]
+  subject [label="Subject"]
+  subject_source_id [label="Subject-source-id"]
+  metric [label="Metric"]
+  subject_metric [label="Subject-metric"]
+  measurement [label="Measurement"]
+
+  subject_source_id -> source
+  subject_source_id -> subject
+  subject_metric -> subject
+  subject_metric -> metric
+  measurement -> subject_metric
+  measurement -> subject [style="dotted" label="title"]
+  measurement -> metric [style="dotted" label="title"]
+  measurement -> metric [style="dotted" label="unit"]
+  measurement -> subject_metric [style="dotted" label="target"]
+  measurement -> metric [style="dotted" label="target"]
+}
