@@ -8,6 +8,7 @@ First, check that the id has the right structure and is a valid item.
         id: String
         source: String
         subject: String
+        data_type: String
 
 Next, check that an id, source, and subject are present. The UI forces the user to
 select a source and subject, so if they are missing it is a fatal error.
@@ -18,3 +19,6 @@ select a source and subject, so if they are missing it is a fatal error.
         throw new Meteor.Error('invalid-subject-source-id', 'You must add a source to a subject-source-id')
       if id.subject == ''
         throw new Meteor.Error('invalid-subject-source-id', 'You must add a subject to a subject-source-id')
+      if id.data_type == ''
+        throw new Meteor.Error('invalid-subject-source-id', 'You must add a data type to a subject-source-id')
+  

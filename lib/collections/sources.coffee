@@ -5,6 +5,11 @@
    {_id: 'jenkins', title: 'Jenkins'},
    {_id: 'jira', title: 'Jira'}]
 
+@source_data_types = ->
+  sonar: [{_id: 'dashboard', title: 'Dashboard'}]
+  jenkins: [{_id: 'test_report', title: 'Test report'}]
+  jira: [{_id: 'open_bug_reports', title: 'Open bug reports'}]
+
 Sources.allow
   update: (userId, source) -> ownsProjectItem userId, source
   remove: (userId, source) -> ownsProjectItem userId, source
