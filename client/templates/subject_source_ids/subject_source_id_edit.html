@@ -2,16 +2,7 @@
   <form name="subject_source_id" class="item-form form">
     {{> subjectSelect}}
     {{> sourceSelect}}
-    <div class="form-group">
-      <div class="controls">
-        <label for="data_type">{{_ "Data type"}}</label>
-        <select name="data_type" class="form-control">
-          {{#each data_types}}
-            <option selected="{{dataTypeIsSelected}}" value="{{_id}}">{{title}}</option>
-          {{/each}}
-        </select>
-      </div>
-    </div>
+    {{> dataTypeSelect}}
     <div class="form-group">
       <div class="controls">
         <label for="id">{{_ "Subject-source-id"}}</label>

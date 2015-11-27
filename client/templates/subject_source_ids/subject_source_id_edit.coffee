@@ -1,12 +1,3 @@
-Template.subjectSourceIdEdit.helpers
-  data_types: ->
-    current_source_type = Session.get('currentSourceType') or Sources.findOne({_id: this.source}).type
-    source_data_types()[current_source_type]
-
-  dataTypeIsSelected: ->
-    subject_source_id = Template.parentData()
-    @_id == subject_source_id.data_type
-
 Template.subjectSourceIdEdit.events
   'submit form': (e, template) ->
     e.preventDefault()

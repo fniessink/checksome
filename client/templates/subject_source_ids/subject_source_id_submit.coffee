@@ -1,8 +1,3 @@
-Template.subjectSourceIdSubmit.helpers
-  data_types: ->
-    current_source_type = Session.get('currentSourceType') or Sources.find().fetch()[0].type
-    source_data_types()[current_source_type]
-
 Template.subjectSourceIdSubmit.events
   'submit form': (e, template) ->
     e.preventDefault()
