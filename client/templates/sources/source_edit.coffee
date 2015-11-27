@@ -11,6 +11,8 @@ Template.sourceEdit.events
       description: $(e.target).find('[name=description]').val()
       type: $(e.target).find('[name=source_type]').val()
       url: $(e.target).find('[name=url]').val()
+      username: $(e.target).find('[name=username]').val() or ''
+      password: $(e.target).find('[name=password]').val() or ''
 
     Sources.update this._id, {$set: sourceProperties}, (error) ->
       if error

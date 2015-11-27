@@ -10,6 +10,8 @@ Template.sourceSubmit.events
       description: $(e.target).find('[name=description]').val()
       type: $(e.target).find('[name=source_type]').val()
       url: $(e.target).find('[name=url]').val()
+      username: $(e.target).find('[name=username]').val() or ''
+      password: $(e.target).find('[name=password]').val() or ''
       projectId: template.data._id
 
     Meteor.call 'sourceInsert', source, (error, sourceId) ->

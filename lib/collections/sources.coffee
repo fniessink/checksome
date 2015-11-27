@@ -8,7 +8,7 @@
 @source_data_types = ->
   sonar: [{_id: 'dashboard', title: 'Dashboard'}]
   jenkins: [{_id: 'test_report', title: 'Test report'}]
-  jira: [{_id: 'open_bug_reports', title: 'Open bug reports'}]
+  jira: [{_id: 'open_bugs_query', title: 'Open bugs query'}]
 
 Sources.allow
   update: (userId, source) -> ownsProjectItem userId, source

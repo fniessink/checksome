@@ -7,6 +7,8 @@ First, check that the item has the right structure and is a valid item.
       check source, Match.ObjectIncluding
         type: String
         url: String
+        username: String
+        password: String
       validateItem source
 
 Then, check that a type is present.
