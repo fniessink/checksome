@@ -1,29 +1,17 @@
-Template.subjectSourceIdEdit.onCreated ->
-  Session.set('subjectSourceIdEdit:currentSourceType', null)
-
 Template.subjectSourceIdEdit.helpers
   subjects: -> Subjects.find()
-  sources: -> Sources.find()
   data_types: ->
-    current_source_type = Session.get('subjectSourceIdEdit:currentSourceType') or Sources.findOne({_id: this.source}).type
-    return source_data_types()[current_source_type]
+    current_source_type = Session.get('currentSourceType') or Sources.findOne({_id: this.source}).type
+    source_data_types()[current_source_type]
 
-  sourceIsSelected: ->
-    subject_source_id = Template.parentData()
-    this._id == subject_source_id.source
   subjectIsSelected: ->
     subject_source_id = Template.parentData()
-    this._id == subject_source_id.subject
+    @_id == subject_source_id.subject
   dataTypeIsSelected: ->
     subject_source_id = Template.parentData()
-    this._id == subject_source_id.data_type
+    @_id == subject_source_id.data_type
 
 Template.subjectSourceIdEdit.events
-  'change .source': (e) ->
-    source_id = $(e.target).val()
-    current_source_type = Sources.findOne({_id: source_id}).type
-    Session.set('subjectSourceIdEdit:currentSourceType', current_source_type)
-
   'submit form': (e, template) ->
     e.preventDefault()
 

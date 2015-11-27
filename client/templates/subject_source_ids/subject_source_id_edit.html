@@ -10,16 +10,7 @@
         </select>
       </div>
     </div>
-    <div class="form-group">
-      <div class="controls">
-        <label for="source">{{_ "Source"}}</label>
-        <select name="source" class="form-control source">
-          {{#each sources}}
-            <option selected="{{sourceIsSelected}}" value="{{_id}}">{{title}}</option>
-          {{/each}}
-        </select>
-      </div>
-    </div>
+    {{> sourceSelect}}
     <div class="form-group">
       <div class="controls">
         <label for="data_type">{{_ "Data type"}}</label>
