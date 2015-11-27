@@ -1,15 +1,6 @@
 <template name="subjectSourceIdSubmit">
   <form name="subject" class="item-form form">
-    <div class="form-group">
-      <div class="controls">
-        <label for="subject">{{_ "Subject"}}</label>
-        <select name="subject" class="form-control">
-          {{#each subjects}}
-            <option value="{{_id}}">{{title}}</option>
-          {{/each}}
-        </select>
-      </div>
-    </div>
+    {{> subjectSelect}}
     {{> sourceSelect}}
     <div class="form-group">
       <div class="controls">

@@ -1,5 +1,4 @@
 Template.subjectSourceIdSubmit.helpers
-  subjects: -> Subjects.find()
   data_types: ->
     current_source_type = Session.get('currentSourceType') or Sources.find().fetch()[0].type
     source_data_types()[current_source_type]

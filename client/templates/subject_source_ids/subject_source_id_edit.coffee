@@ -1,12 +1,8 @@
 Template.subjectSourceIdEdit.helpers
-  subjects: -> Subjects.find()
   data_types: ->
     current_source_type = Session.get('currentSourceType') or Sources.findOne({_id: this.source}).type
     source_data_types()[current_source_type]
 
-  subjectIsSelected: ->
-    subject_source_id = Template.parentData()
-    @_id == subject_source_id.subject
   dataTypeIsSelected: ->
     subject_source_id = Template.parentData()
     @_id == subject_source_id.data_type
