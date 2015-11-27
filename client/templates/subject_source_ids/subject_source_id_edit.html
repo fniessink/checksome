@@ -3,14 +3,7 @@
     {{> subjectSelect}}
     {{> sourceSelect}}
     {{> dataTypeSelect}}
-    <div class="form-group">
-      <div class="controls">
-        <label for="id">{{_ "Subject-source-id"}}</label>
-        <input name="id" id="id" type="text" value="{{id}}"
-               required="required"
-               placeholder="{{_ 'Subject-source-id'}}" class="form-control"/>
-      </div>
-    </div>
+    {{> idInput}}
     <div class="form-group">
       <button type="submit" class="btn btn-primary submit">{{_ "OK"}}</button>
       <button type="button" class="btn btn-default cancel">{{_ "Cancel"}}</button>
