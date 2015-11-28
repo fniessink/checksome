@@ -13,3 +13,7 @@ Test results
 Open bugs
 
     @open_bugs_meets_target = (value, target) -> value <= target
+
+Open security bugs
+
+    @open_security_bugs_meets_target = (value, target) -> value <= target

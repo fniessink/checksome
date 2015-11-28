@@ -2,7 +2,7 @@ When the template is created, initialize a session variable to keep track of
 the current source.
 
     Template.sourceSelect.onCreated ->
-      Session.set('currentSourceType', null)
+      Session.set('currentSourceType', Sources.findOne().type)
 
 When the user selects a different source, update the session variable.
 

@@ -58,3 +58,11 @@ Create the metric
           subject_types: ['application']
           target: 0
           unit: " open bugs"
+      if not Metrics.findOne({projectId: project._id, title: "Open security bugs"})
+        metricInsert
+          projectId: project._id
+          title: "Open security bugs"
+          description: "Number of open security bugs"
+          subject_types: ['application']
+          target: 0
+          unit: " open security bugs"
