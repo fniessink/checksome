@@ -2,7 +2,7 @@ When the template is created, initialize a session variable to keep track of
 the current data type.
 
     Template.dataTypeSelect.onCreated ->
-      current_source_type = Session.get 'currentSourceType'
+      current_source_type = Session.get('currentSource').type
       subject_source_id = Template.currentData()
       if subject_source_id and subject_source_id.data_type
         current_data_type = subject_source_id.data_type
@@ -21,7 +21,7 @@ The data type is updated whenever the user selects another source type.
 
     Template.dataTypeSelect.helpers
       data_types: ->
-        current_source_type = Session.get 'currentSourceType'
+        current_source_type = Session.get('currentSource').type
         source_data_types()[current_source_type]
 
       dataTypeIsSelected: ->

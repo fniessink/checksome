@@ -13,9 +13,9 @@
 
 @data_type_labels = ->
   dashboard: 'Project key'
-  test_report: 'Job name'
-  open_bugs_query: 'Open bugs filter number'
-  open_security_bugs_query: 'Open security filter number'
+  test_report: 'Test report job'
+  open_bugs_query: 'Open bugs filter'
+  open_security_bugs_query: 'Open security filter'
 
 Sources.allow
   update: (userId, source) -> ownsProjectItem userId, source

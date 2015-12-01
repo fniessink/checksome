@@ -5,6 +5,8 @@ This job collects data from Jira.
         parser.recur().every(1).minute()
 
       handleJob: ->
+        for source in Sources.find({type: 'jira'}).fetch()
+          @update_filter_numbers source
         for subject_source_id in SubjectSourceIds.find().fetch()
           source = Sources.findOne({_id: subject_source_id.source})
           if source.type != 'jira'
@@ -14,6 +16,20 @@ This job collects data from Jira.
               @measure_open_bugs subject_source_id, source
             when 'open_security_bugs_query'
               @measure_open_security_bugs subject_source_id, source
+
+      update_filter_numbers: (source) ->
+        result = @get_filter_json source.url, source.username, source.password
+        if result.json
+          filters = ({_id: filter.id, title: filter.name} for filter in result.json)
+          Sources.update source._id, {$set: {ids: filters}}
+
+      get_filter_json: (jira_url, username, password) ->
+        credentials = {auth: "#{username}:#{password}"}
+        try
+          result = HTTP.get "#{jira_url}rest/api/2/filter/favourite", credentials
+          return {json: result.data, error_message: ''}
+        catch e
+          return {json: null, error_message: e.message}
 
       measure_open_bugs: (subject_source_id, source) ->
         @measure_query_count subject_source_id, source, "Open bugs", open_bugs_meets_target

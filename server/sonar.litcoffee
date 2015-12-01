@@ -6,12 +6,27 @@ collection.
         parser.recur().every(1).minute()
 
       handleJob: ->
+        for source in Sources.find({type: 'sonar'}).fetch()
+          @update_project_keys source
         for subject_source_id in SubjectSourceIds.find().fetch()
           source = Sources.findOne({_id: subject_source_id.source})
           if source.type != 'sonar'
             continue
           @measure_ncloc subject_source_id, source
           @measure_duplication subject_source_id, source
+
+      update_project_keys: (source) ->
+        result = @get_project_keys_json source.url
+        if result.json
+          project_keys = ({_id: project.key, title: project.key} for project in result.json)
+          Sources.update source._id, {$set: {ids: project_keys}}
+
+      get_project_keys_json: (sonar_url) ->
+        try
+          result = HTTP.get sonar_url + 'api/resources?format=json'
+          return {json: result.data, error_message: ''}
+        catch e
+          return {json: null, error_message: e.message}
 
       measure_ncloc: (subject_source_id, source) ->
         metric = Metrics.findOne {title: "NCLOC"}
@@ -67,7 +82,7 @@ collection.
           unit: metric.unit
           target: target
           target_met: target_met
-          error_message: result.error_message 
+          error_message: result.error_message
 
       get_json: (sonar_url, sonar_key) ->
         try

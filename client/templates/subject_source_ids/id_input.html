@@ -2,9 +2,11 @@
   <div class="form-group">
     <div class="controls">
       <label for="id">{{id_label}}</label>
-      <input name="id" id="id" type="text" value="{{id}}"
-             required="required"
-             placeholder="{{id_label}}" class="form-control"/>
+      <select name="id" class="form-control id">
+        {{#each ids}}
+          <option selected="{{idIsSelected}}" value="{{_id}}">{{title}}</option>
+        {{/each}}
+      </select>
     </div>
   </div>
 </template>

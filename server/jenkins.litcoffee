@@ -6,11 +6,26 @@ This job collects data from Jenkins for the job names in the
         parser.recur().every(1).minute()
 
       handleJob: ->
+        for source in Sources.find({type: 'jenkins'}).fetch()
+          @update_job_names source
         for subject_source_id in SubjectSourceIds.find().fetch()
           source = Sources.findOne({_id: subject_source_id.source})
           if source.type != 'jenkins'
             continue
           @measure_test_results subject_source_id, source
+
+      update_job_names: (source) ->
+        result = @get_job_names_json source.url
+        if result.json
+          job_names = ({_id: job.name, title: job.name} for job in result.json.jobs)
+          Sources.update source._id, {$set: {ids: job_names}}
+
+      get_job_names_json: (jenkins_url) ->
+        try
+          result = HTTP.get jenkins_url + 'api/json?tree=jobs[name]'
+          return {json: result.data, error_message: ''}
+        catch e
+          return {json: null, error_message: e.message}
 
       measure_test_results: (subject_source_id, source) ->
         metric = Metrics.findOne {title: "Test result"}
