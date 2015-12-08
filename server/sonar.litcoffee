@@ -20,6 +20,8 @@ collection.
         if result.json
           project_keys = ({_id: project.key, title: project.key} for project in result.json)
           Sources.update source._id, {$set: {ids: project_keys}}
+        else
+          console.log result.error_message
 
       get_project_keys_json: (sonar_url) ->
         try
