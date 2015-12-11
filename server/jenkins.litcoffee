@@ -34,15 +34,23 @@ This job collects data from Jenkins for the job names in the
         target = subject_metric.target or metric.target
         jenkins_job = subject_source_id.id
         result = @get_json source.url, jenkins_job
+        test_results_found = false
         if result.json
           for action in result.json['actions']
             if 'failCount' of action
               fail_count = action.failCount
               skip_count = action.skipCount
               total_count = action.totalCount
-          value = fail_count + skip_count
-          target_met = test_result_meets_target(value, target)
-          error_message = null
+              test_results_found = true
+              break
+          if test_results_found
+            value = fail_count + skip_count
+            target_met = test_result_meets_target(value, target)
+            error_message = null
+          else
+            value = null
+            target_met = null
+            error_message = "Jenkins job #{jenkins_job} doesn't contain test results."
         else
           value = null
           target_met = null
@@ -61,8 +69,8 @@ This job collects data from Jenkins for the job names in the
       get_json: (jenkins_url, jenkins_job) ->
         try
           result = HTTP.get jenkins_url + 'job/' + jenkins_job + '/lastBuild/api/json?tree=actions[failCount,skipCount,totalCount]'
-          return {json: result.data, error_message: ''}
+          {json: result.data, error_message: ''}
         catch e
-          return {json: null, error_message: e.message}
+          {json: null, error_message: e.message}
 
     Job.push new JenkinsJob
