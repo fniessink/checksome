@@ -1,0 +1,14 @@
+<template name="subjectItem">
+  <div class="item" id="{{_id}}">
+    <div class="item-content">
+      <h3>{{title}} <span>{{description}}</span></h3>
+      {{> submittedAuthorDate}}
+    </div>
+    <div class="item-content">
+      {{> highchartsHelper chartId=(chartId) chartWidth="12%" chartHeight="12%" chartObject=subjectPieChart}}
+    </div>
+    <button type="button" class="btn btn-default edit">
+      <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> {{_ "Edit"}}
+    </button>
+  </div>
+</template>
