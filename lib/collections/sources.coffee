@@ -38,8 +38,4 @@ Meteor.methods
     Sources.update({_id: s._id}, {$set: {position: s.position+1}}) for s in Sources.find({projectId: source.projectId}).fetch()
     # Create the source, save the id
     source._id = Sources.insert source
-    # Now create a notification, informing the project members a source has been added
-    project = Projects.findOne source.projectId
-    text = user.username + ' added source ' + source.title + ' to ' + project.title
-    createNotification(member, user._id, source.projectId, text) for member in project.members
     return source._id

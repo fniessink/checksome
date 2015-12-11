@@ -11,13 +11,6 @@
         <a class="navbar-brand" href="{{pathFor 'home'}}">Checksome</a>
       </div>
       <div class="collapse navbar-collapse" id="navigation">
-        <ul class="nav navbar-nav">
-          {{#if currentUser}}
-            <li class="dropdown">
-              {{> notifications}}
-            </li>
-          {{/if}}
-        </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
             <form class="navbar-form">

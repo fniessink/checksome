@@ -28,10 +28,6 @@ Meteor.methods
     subject._id = Subjects.insert subject
     # Add the subject Metrics
     insertSubjectMetricsForSubject subject
-    # Now create a notification, informing the project members a subject has been added
-    project = Projects.findOne subject.projectId
-    text = user.username + ' added subject ' + subject.title + ' to ' + project.title
-    createNotification(member, user._id, subject.projectId, text) for member in project.members
     return subject._id
 
   subjectEdit: (subject, subjectAttributes) ->
